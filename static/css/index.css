@@ -3,3 +3,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+li {
+    text-decoration: None;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: #EEEEEE ;
+    box-shadow: 0 3px 0 0 rgb(0 , 0 , 0 , 0.25)  ;
+}
+
+ul.flex_row {
+    display: flex;
+    flex-direction: row;
+}
