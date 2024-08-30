@@ -7,9 +7,13 @@
 }
 
 html, body {
-    position: relative;
     width: 100%;
     height: 100%;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 html {
@@ -32,6 +36,7 @@ html {
 
 .flex_row {
     display: flex;
+    flex-flow: row wrap;
     list-style: none;
     flex-grow: 0.1;
     justify-content: space-between;
@@ -69,12 +74,14 @@ main{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: calc(100% - 237px);
     width: 100%;
+    margin: 5rem 0;
+    flex-grow: 1;
 }
 
 .user_info{
     width: 25vw;
+    margin-bottom: 3rem;
 }
 
 .user_info h1{
@@ -86,8 +93,8 @@ main{
 }
 
 .container{
-    min-width: 500px;
-    width: 45vw;
+    min-width: 320px;
+    width: 60vw;
     max-width: 920px;
     height: 50vh;
     border-end-end-radius: 5%;
@@ -98,18 +105,26 @@ main{
 
 .nav{
     display: flex;
-    border-bottom: solid 1px;
     text-align: center;
     background-color: #fff;
 }
 
 .nav h2{
-    flex-grow: 1;
-    border-right: solid 1px;
-    padding: 5px 0;
+    position: relative;
+    padding: 5px;
     cursor: pointer;
-    place-items: center;
-    overflow: hidden;
+    border-bottom: 1px solid black;
+    flex-grow: 1;
+}
+
+.nav h2::before {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: black;
 }
 
 .nav h2:hover{
@@ -177,29 +192,26 @@ input {
 /* ESTILO DO RODAPÉ */
 
 footer{
-    position: absolute;
-    bottom: 0;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-around;
     background-color: #a0aba8;
-    box-shadow: 0 -1px 2px 1px ;
+    box-shadow: 0 -1px 2px 1px;
+    padding: 1rem 2rem;
     width: 100%;
-    padding: 10px;
 }
 
 .dev_names{
-    padding-top: 15px;
     display:flex;
     flex-flow: column nowrap;
     color: darkgreen;
     font-size: 1.6rem;
+    margin-right: 2rem;
 }
 
 .unb{
-    padding-top: 25px;
     align-items: center;
     display: flex;
-    margin-right: 50px;
     color: rgb(26, 26, 122);
     font-size: 1.6rem;
 }
@@ -218,4 +230,31 @@ footer{
 
 .dev_names h5{
     text-wrap: nowrap;
+}
+
+@media (max-width: 720px) {
+    main {
+        flex-flow: column nowrap;
+    }
+
+    .dev_names {
+        margin-bottom: 2rem;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .unb{
+        text-align: center;
+        flex-flow: column-reverse nowrap;
+    }
+
+    .img_unb {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 370px) {
+    .flex_row {
+        justify-content: center;
+    }
 }
