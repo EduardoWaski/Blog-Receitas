@@ -9,29 +9,25 @@
 </head>
 <body>
     <header class="header">
-
         <a href="index.html"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
 
         <ul class="flex_row">
-            <li class="ul_option"><img src="../static/img/fork.png">Receitas</li>
-            <li class="ul_option"><img src="../static/img/profile.png">Username</li>
+            <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
+            <li class="ul_option"><img src="../static/img/profile.png" alt="Ícone de usuário">Username</li>
         </ul>
-
     </header>
 
     <main>
         <div class="user_info">
             <img class="profile_img" src="../static/img/user_profile_img.png" alt="Foto Perfil">
-            <h1>
-               Username
-            </h1>
+            <h1>Username</h1>
         </div>
 
-<!--ÁREA DE MUDANÇA DE DADOS-->
+    <!--ÁREA DE MUDANÇA DE DADOS-->
 
         <div class="container">
             <div class="nav">
-                <h2 class="active">&#128151</h2>
+                <h2 class="active">&#128151;</h2>
                 <h2>Meus Comentários</h2>
                 <h2>Editar Nome</h2>
                 <h2>Editar Senha</h2>
@@ -39,74 +35,74 @@
             </div>
 
             <div class="nav_content">
-                <div class="active">
-                    <h1>
-                        Espaço reservado para favoritos
-                    </h1> 
-                </div>
-                <div class="my_comments">
-                    <h1>
-                        Espaço reservado para meus comentários
-                    </h1>
-                </div>
-                <div class="edit_username">
-                    <h5>
-                        Novo nome:
-                    </h5>
-                    <input type="text" id="new_username">
-                    <h5>
-                        Confirme com a sua senha:
-                    </h5> 
-                    <input type="password" id="password">
-                </div>
-                <div class="edit_password">
-                    <h5>
-                        Nova senha:
-                    </h5> 
-                    <input type="password" id="new_password">
-                    <h5>
-                        Confirme com a sua senha anterior:
-                    </h5>
-                    <input type="password" id="password">
-                </div>
-                <div>
 
+                <div class="active">
+                    <h1>Espaço reservado para favoritos</h1> 
+                </div>
+
+                <div class="my_comments">
+                    <h1>Espaço reservado para meus comentários</h1>
+                </div>
+
+                <!-- Edit username -->
+                <div class="edit_username">
+                    <div class="input_container">
+                        <label>Novo nome:</label>
+                        <input type="text" id="new_username" name="new_username">
+                    </div>
+
+                    <div class="input_container">
+                        <label>Confirme sua senha:</label>
+                        <input type="password" class="password" name="password">
+                    </div>
+
+                    <button class="confirm_bt" type="submit">Confirmar</button>
+                </div>
+
+                <!-- Edit password -->
+                <div class="edit_password">
+                    <div class="input_container">
+                        <label>Nova senha:</label>
+                        <input type="password" id="new_password" name="new_password">
+                    </div>
+
+                    <div class="input_container">
+                        <label>Confirme com a sua senha anterior:</label>
+                        <input type="password" class="password" name="password">
+                    </div>
+
+                    <button class="confirm_bt">Confirmar</button>
+                </div>
+
+                <!-- Delete Account -->
+                <div class="edit_password">
+                    <div class="input_container">
+                        <label>Confirme sua senha:</label>
+                        <input type="password" class="password" name="password">
+                    </div>
+
+                    <button class="confirm_bt">Confirmar</button>
                 </div>
             </div>
-            
-            
-            
         </div>
     </main>
 
-            <!--RODAPÉ DA PÁGINA-->
+    <!--RODAPÉ DA PÁGINA-->
 
-        <footer>
-            <div class="dev_names"> 
-                <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
-                <h5>Eduardo Silva Waski - 231011284</h5>
-                <h5>José Victor Gabriel - 231027121</h5>
-            </div>
-            <div class="unb">
-                <h2>Universidade de Brasília</h2>
-                <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
-            </div>
-        </footer>
-    <script>
-        const navs = document.querySelectorAll(".nav h2")
-        const navsContent = document.querySelectorAll(".nav_content div")
-        navs.forEach((nav, index) => {
-            nav.addEventListener("click", () => {
-              navsContent.forEach((content) => {
-                content.classList.remove("active")
-              })  
-              navs.forEach((nav) => {
-                nav.classList.remove("active")
-              })
-              navs[index].classList.add("active")
-              navsContent[index].classList.add("active")
-            })
-        })
-    </script>
+    <footer>
+        <div class="dev_names"> 
+            <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
+            <h5>Eduardo Silva Waski - 231011284</h5>
+            <h5>José Victor Gabriel - 231027121</h5>
+        </div>
+        <div class="unb">
+            <h2>Universidade de Brasília</h2>
+            <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="../static/js/profile_page.js"></script>
+
 </body>
 </html>
