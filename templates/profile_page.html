@@ -21,28 +21,92 @@
 
     <main>
         <div class="user_info">
-            <img src="../static/img/profile.png" alt="Foto Perfil">
+            <img class="profile_img" src="../static/img/user_profile_img.png" alt="Foto Perfil">
             <h1>
-                Username
+               Username
             </h1>
         </div>
-        <div class="container_navs">
-            <div class="favorite_nav">
-                <h2></h2>
-            </div>
-            <div class= "comments_nav">
 
-            </div>
-            <div class="edit_name_nav">
+<!--ÁREA DE MUDANÇA DE DADOS-->
 
+        <div class="container">
+            <div class="nav">
+                <h2 class="active">&#128151</h2>
+                <h2>Meus Comentários</h2>
+                <h2>Editar Nome</h2>
+                <h2>Editar Senha</h2>
+                <h2 style="color: crimson; border-right: 0;">Deletar Conta</h2>
             </div>
-            <div class="edit_password_nav">
 
-            </div>
-            <div class="delete_account_nav">
+            <div class="nav_content">
+                <div class="active">
+                    <h1>
+                        Espaço reservado para favoritos
+                    </h1> 
+                </div>
+                <div class="my_comments">
+                    <h1>
+                        Espaço reservado para meus comentários
+                    </h1>
+                </div>
+                <div class="edit_username">
+                    <h5>
+                        Novo nome:
+                    </h5>
+                    <input type="text" id="new_username">
+                    <h5>
+                        Confirme com a sua senha:
+                    </h5> 
+                    <input type="password" id="password">
+                </div>
+                <div class="edit_password">
+                    <h5>
+                        Nova senha:
+                    </h5> 
+                    <input type="password" id="new_password">
+                    <h5>
+                        Confirme com a sua senha anterior:
+                    </h5>
+                    <input type="password" id="password">
+                </div>
+                <div>
 
+                </div>
             </div>
+            
+            
+            
         </div>
     </main>
+
+            <!--RODAPÉ DA PÁGINA-->
+
+        <footer>
+            <div class="dev_names"> 
+                <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
+                <h5>Eduardo Silva Waski - 231011284</h5>
+                <h5>José Victor Gabriel - 231027121</h5>
+            </div>
+            <div class="unb">
+                <h2>Universidade de Brasília</h2>
+                <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
+            </div>
+        </footer>
+    <script>
+        const navs = document.querySelectorAll(".nav h2")
+        const navsContent = document.querySelectorAll(".nav_content div")
+        navs.forEach((nav, index) => {
+            nav.addEventListener("click", () => {
+              navsContent.forEach((content) => {
+                content.classList.remove("active")
+              })  
+              navs.forEach((nav) => {
+                nav.classList.remove("active")
+              })
+              navs[index].classList.add("active")
+              navsContent[index].classList.add("active")
+            })
+        })
+    </script>
 </body>
 </html>

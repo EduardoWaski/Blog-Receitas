@@ -62,3 +62,128 @@ a {
     text-decoration: none;
 }
 
+/*CONTEÚDO CENTRAL DA PÁGINA*/
+
+main{
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.user_info{
+    width: 25vw;
+}
+
+.user_info h1{
+    text-align: center;
+}
+
+.profile_img{
+    width: 100%;  
+}
+
+.container{
+    position: relative;
+    width: 60vw;
+    border-end-end-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border: 1px;
+    border-style: solid ;
+    background-color:rgb(246, 214, 214);
+}
+
+.nav{
+    border-bottom: solid 1px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.nav h2{
+    flex-grow: 1;
+    border-right: solid 1px;
+    padding: 5px 0;
+    cursor: pointer;
+    place-items: center;
+    overflow: hidden;
+}
+
+.nav h2:hover{
+    background-color: rgb(122, 137, 90);
+    color: #EEEEEE;
+}
+
+.nav_content{
+    position: relative;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+    text-align: center;
+    font-size: large;
+    line-height: 30px;
+}
+
+.nav_content div{
+    display: none;
+}
+
+.nav_content .active{
+    display: block;
+}
+
+.nav .active{
+    background-color: rgb(122, 137, 90);
+}
+
+
+
+
+/* ESTILO DO RODAPÉ */
+
+footer{
+    display: flex;
+    background-color: #a0aba8;
+    box-shadow: 0 -1px 2px 1px ;
+    margin-top: 60px;
+    justify-content: space-between;
+    padding-bottom: 25px;
+}
+
+.dev_names{
+    padding-top: 15px;
+    display:flex;
+    flex-flow: column nowrap;
+    margin: auto;
+    margin-left: 50px;
+    color: darkgreen;
+    font-size: 1.6rem;
+}
+
+.unb{
+    padding-top: 25px;
+    align-items: center;
+    margin: auto;
+    display: flex;
+    margin-right: 50px;
+    color: rgb(26, 26, 122);
+    font-size: 1.6rem;
+    margin-left: 150px;
+}
+
+.img_unb{
+    max-height: 37px;
+    max-width: 75px;
+    height: auto;
+    width: auto;
+    margin-left: 20px;
+}
+
+.unb h2{
+    text-wrap: nowrap;
+}
+
+.dev_names h5{
+    text-wrap: nowrap;
+}
