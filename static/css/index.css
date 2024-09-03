@@ -16,6 +16,11 @@ html {
     font-size: 62.5%;
 }
 
+body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
 .header {
     position: relative;
     display: flex;
@@ -68,26 +73,27 @@ a {
     justify-content: center;
     align-items: center;
     margin: 0 50px;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 .search_input {
-    position: absolute;
     width: 100%;
     background-color: #FFFFFF;
-    border: 1px solid;
+    border: 1px solid black;
+    border-right: 0;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 20px 0 0 20px;
     padding: 0 8px;
 }
 
 .input_div button {
-    position: absolute;
-    z-index: 2;
-    right: 10px;
-    border: 0;
-    background-color: rgba(255, 255, 255, 0);
+    height: 40px;
+    border: 1px solid black;
+    border-left: 0;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
+    border-radius:  0 20px 20px 0;
+
 }
 
 .lupe_img {
@@ -97,6 +103,13 @@ a {
 
 
 /* INÍCIO DA MAIN DA HOMEPAGE! */
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    flex-grow: 1;
+}
 
 .homepage_title{
     margin: auto;
@@ -149,32 +162,27 @@ h2.receipt_text{
 
 footer{
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
     background-color: #a0aba8;
-    box-shadow: 0 -1px 2px 1px ;
-    margin-top: 60px;
-    justify-content: space-between;
-    padding-bottom: 25px;
+    box-shadow: 0 -1px 2px 1px;
+    padding: 1rem 2rem;
+    width: 100%;
 }
 
 .dev_names{
-    padding-top: 15px;
     display:flex;
     flex-flow: column nowrap;
-    margin: auto;
-    margin-left: 50px;
     color: darkgreen;
     font-size: 1.6rem;
+    margin-right: 2rem;
 }
 
 .unb{
-    padding-top: 25px;
     align-items: center;
-    margin: auto;
     display: flex;
-    margin-right: 50px;
     color: rgb(26, 26, 122);
     font-size: 1.6rem;
-    margin-left: 150px;
 }
 
 .img_unb{

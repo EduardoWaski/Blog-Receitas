@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo_container
+    restart: always
+    volumes:
+      - volume_mongo:/data/db
+    networks:
+      - mongo_network
+    ports:
+      - 27017:27017
+
+  mongo_express:
+    image: mongo-express
+    container_name: mongo_express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    networks:
+      - mongo_network
+
+networks:
+  mongo_network:
+    driver: bridge
+
+volumes:
+  volume_mongo:
+  volume_express:
