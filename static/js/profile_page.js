@@ -1,13 +1,15 @@
 
 const navs = document.querySelectorAll(".nav h2")
-const navsContent = document.querySelectorAll(".nav_content > div")
+const nav_forms = document.querySelectorAll(".nav_content > form")
 const inputs = [...document.querySelectorAll(".input_container input")]
+
+console.log(nav_forms)
 
 navs.forEach((nav, index) => {
     nav.addEventListener("click", () => {
 
         // Deselecionando todas as opções
-        navsContent.forEach((content) => {
+        nav_forms.forEach((content) => {
             content.classList.remove("active")
         })  
 
@@ -16,13 +18,14 @@ navs.forEach((nav, index) => {
             nav.classList.remove("active")
         })
 
+        // Limpando todos os inputs
         inputs.map((element) => {
             element.value = ""
         })
 
         // Selecionando a opção e o conteúdo escolhido
         navs[index].classList.add("active")
-        navsContent[index].classList.add("active")
+        nav_forms[index].classList.add("active")
 
     })
 })

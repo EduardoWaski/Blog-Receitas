@@ -36,16 +36,22 @@
 
             <div class="nav_content">
 
-                <div class="active">
-                    <h1>Espaço reservado para favoritos</h1> 
-                </div>
+                <!-- Favourites -->
 
-                <div class="my_comments">
-                    <h1>Espaço reservado para meus comentários</h1>
-                </div>
+                <form class="farourites_form active" method="post" action="/perfil">
+                    <h1>Espaço reservado para favoritos</h1> 
+                </form>
+
+                <!-- Comments -->
+
+                <form class="my_comments_form" method="post" action="/perfil">
+                    <h1>Espaço reservado para meus comentários</h1> 
+                </form>
 
                 <!-- Edit username -->
-                <div class="edit_username">
+
+                <form class="edit_username_form" method="post" action="/perfil">
+
                     <div class="input_container">
                         <label>Novo nome:</label>
                         <input type="text" id="new_username" name="new_username">
@@ -56,11 +62,12 @@
                         <input type="password" class="password" name="password">
                     </div>
 
-                    <button class="confirm_bt" type="submit">Confirmar</button>
-                </div>
+                    <button class="confirm_bt"type="submit">Confirmar</button>
+                </form>
 
                 <!-- Edit password -->
-                <div class="edit_password">
+
+                <form class="edit_password_form" method="post" action="/perfil">
                     <div class="input_container">
                         <label>Nova senha:</label>
                         <input type="password" id="new_password" name="new_password">
@@ -71,18 +78,20 @@
                         <input type="password" class="password" name="password">
                     </div>
 
-                    <button class="confirm_bt">Confirmar</button>
-                </div>
+                    <button type="submit" class="confirm_bt">Confirmar</button>
+                </form>
 
                 <!-- Delete Account -->
-                <div class="edit_password">
+
+                <form class="delete_account_form" method="post" action="/perfil">
                     <div class="input_container">
                         <label>Confirme sua senha:</label>
                         <input type="password" class="password" name="password">
                     </div>
 
-                    <button class="confirm_bt">Confirmar</button>
-                </div>
+                    <button type="submit" name="delete_account_bt" class="confirm_bt">Confirmar</button>
+                </form>
+
             </div>
         </div>
     </main>

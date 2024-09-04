@@ -2,6 +2,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
+# Definindo a chave secreta para cookies/sessões/formulários
+app.config['SECRET_KEY'] = "secreto demais"
+
 # Registrando as blueprints
 from controller.auth import auth
 app.register_blueprint(auth)
