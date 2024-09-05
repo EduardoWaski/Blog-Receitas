@@ -16,6 +16,17 @@
 
             <h1 class="welcome_msg">Bem vindo!</h1>
 
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li style="color: red;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+
+
             <div class="input_container">
                 <label>Nome de Usuário:</label>
                 <input type="text">
