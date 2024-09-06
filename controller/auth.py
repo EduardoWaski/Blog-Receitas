@@ -1,18 +1,14 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for, flash
+from flask import Blueprint, render_template, request, session, redirect, url_for
 from models.db_config import *
 from models.models import *
 from .auxiliar import *
 
 auth = Blueprint('auth', __name__)
 
-# User fictício
-users = {
-    'username': 'eduardo', 'password': '1234',
-}
-
 @auth.route("/acesso", methods = ["GET", "POST"])
 def login_signup():
 
+    # Limpando todos os flashes existentes
     session.pop('_flashes', None)
 
     if request.method == "GET":
@@ -26,9 +22,7 @@ def login_signup():
 
     # Verificando se o usuário tentou fazer login ou cadastro
     if login_option:
-
-        # Essa parte deverá ser trocada depois, pois devemos analisar os usuários dentro do banco de dados
-        if is_valid_login(inputed_username, inputed_password):
+        if is_correct_login(inputed_username, inputed_password):
 
             session['username'] = inputed_username
             session['password'] = inputed_password
@@ -36,7 +30,7 @@ def login_signup():
 
     # Se for cadastro
     else:                   
-        if is_valid_input(inputed_username):
+        if is_valid_input(inputed_username, inputed_password, True):
 
             session['username'] = inputed_username
             session['password'] = inputed_password

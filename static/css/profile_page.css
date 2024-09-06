@@ -156,6 +156,26 @@ form {
     background-color: rgb(122, 137, 90);
 }
 
+.no_display {
+    display: none;
+}
+
+.invalid_msg {
+    text-align: right;
+    width: 100%;
+    font-weight: bold;
+    color: red;
+    font-size: 1.2rem;
+}
+
+.valid_msg {
+    text-align: right;
+    width: 100%;
+    font-weight: bold;
+    color: rgb(19, 119, 57);
+    font-size: 1.2rem;
+}
+
 
 .input_container {
     display: flex;

@@ -1,74 +1,72 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify, make_response
 from models.db_config import *
+from models.models import *
 from .auxiliar import *
-from models.models import * # Importando apenas para criar um usuário teste. Deve ser removido depois
 
 profile = Blueprint("profile", __name__)
 
 @profile.route("/perfil", methods=["GET"])
 def profile_page():
-    
-    # Usuário apenas para teste (deve ser removido depois)
-    new_user = User("novo_user", "123456").__dict__
-    users_collection.insert_one(new_user)
 
-    # Alimentando a sessão
-    session["username"] = new_user.get("username")
-    session["password"] = new_user.get("password")
-
-    # Verifica se há um usuário logado, caso contrário é direcionado para a página de login
     if "username" in session:
         return render_template("profile_page.html")
     return redirect(url_for("auth.login_page"))
 
-
 # ------------------------------------- MÉTODO POST DO PERFIL -----------------------------------------------
-
 
 @profile.route("/perfil", methods=["POST"])
 def profile_page_post():
     
-    # Recuperando o formulário e os valores nele colocados
+    # Recuperando o formulário, senha e o botão apertado
     inputed_form = request.get_json()
-
-
-    inputed_new_username = inputed_form["inputed_new_username"]
-    inputed_new_password = inputed_form["inputed_new_password"]
     inputed_password = inputed_form["inputed_password"]
     pressed_btn = inputed_form["pressed_btn"]
 
-    print(inputed_new_username, inputed_new_password, inputed_password, pressed_btn)
+
+
+    # Verificando se a senha colocada está correta
+    if not is_correct_password(inputed_password):
+        return make_response(jsonify({"status": "incorrect_password"}))
+    
+    # BOTÕES
 
     # Recuperando o usuário logado
     logged_username = session["username"]
-    logged_password = session["password"]
 
-
-    # # Verificando se a senha colocada está correta
-    # if not is_valid_password(logged_password, inputed_password):
-    #     return make_response(jsonify({"status": "invalid_password"}))
-    
+    # Deletando conta
     if pressed_btn == "delete_account_btn":
+
         users_collection.delete_one({"username": logged_username})
-        session.clear()
+        return redirect(url_for("logout.logout_link"))
 
-        return make_response(jsonify({"status": "user_deleted"}))
-
-    # Trocando username/senha
-
+    # Filtro para encontrar o usuário no banco de dados
     filter = {"username": logged_username}
 
+    # Editando usuário
     if pressed_btn == "edit_username_btn":
-        users_collection.update_one(filter, {"$set": {"username": inputed_new_username}})
-        session["username"] = inputed_new_username
 
-        return make_response(jsonify({"status": "username_changed"}))
+        inputed_new_username = inputed_form["inputed_new_username"]
+
+        # Verificando se o usuário é válido
+        if not is_valid_username(inputed_new_username):
+            return make_response(jsonify({"status": "invalid_username"}))
+        
+        session["username"] = inputed_new_username
+        users_collection.update_one(filter, {"$set": {"username": inputed_new_username}})
+        return make_response(jsonify({"status": "credentials_changed"}))
     
+    # Editando senha
     if pressed_btn == "edit_password_btn":
+
+        inputed_new_password = inputed_form["inputed_new_password"]
+
+        if not is_valid_password(inputed_new_password):
+            return make_response(jsonify({"status": "invalid_password"}))
+
+
         users_collection.update_one(filter, {"$set": {"password": inputed_new_password}})
         session["password"] = inputed_new_password
-
-        return make_response(jsonify({"status": "password_changed"}))
+        return make_response(jsonify({"status": "credentials_changed"}))
     
-    return make_response(jsonify({"status": "default"}))
+    return make_response(jsonify({"status": "credentials_changed"}))
     

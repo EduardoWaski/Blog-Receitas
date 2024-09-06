@@ -5,6 +5,7 @@ const nav_forms = document.querySelectorAll(".nav_content > form")
 const inputs = [...document.querySelectorAll(".input_container input")]
 const buttons = [...document.querySelectorAll("button")]
 const password_inputs = [...document.querySelectorAll("input[name=password]")]
+const auth_msgs = [...document.querySelectorAll(".no_display")]
 
 navs.forEach((nav, index) => {
     nav.addEventListener("click", () => {
@@ -56,10 +57,8 @@ buttons.map((btn) => {
         }
 
         // Comunicando com o servidor através de uma requisição assíncrona
-        fetch(window.location, {
+        fetch(window.location.href, {
             method: "POST",
-            cache: 'no-cache',
-            credentials: "omit",
             body: JSON.stringify(entry),
             headers: {"content-type": "application/json"}
         })
@@ -74,23 +73,40 @@ buttons.map((btn) => {
 
             switch (status) {
                 case "invalid_password":
-                    alert("Senha inválida")
+                    auth_msgs.map((msg) => {
+                        msg.classList.remove("no_display")
+                        msg.classList.remove("valid_msg")
+                        msg.classList.add("invalid_msg")
+                        msg.innerHTML = "Nova senha inválida!"
+                    })
                     break;
-            
-                case "user_deleted":
-                    alert("Usuário deletado")
-                    break;
-            
-                case "username_changed":
-                    alert("Usuário mudou")
-                    break;
-            
-                case "invalid_password":
-                    alert("Senha mudou")
-                    break
 
-                default:
-                    alert("Status default")
+                case "invalid_username":
+                    auth_msgs.map((msg) => {
+                        msg.classList.remove("no_display")
+                        msg.classList.remove("valid_msg")
+                        msg.classList.add("invalid_msg")
+                        msg.innerHTML = "Usuário inválido!"
+                    })
+                    break;
+
+                case "incorrect_password":
+                    auth_msgs.map((msg) => {
+                        msg.classList.remove("no_display")
+                        msg.classList.remove("valid_msg")
+                        msg.classList.add("invalid_msg")
+                        msg.innerHTML = "Senha incorreta!"
+                    })
+                    break;
+            
+                case "credentials_changed":
+                    auth_msgs.map((msg) => {
+                        msg.classList.remove("no_display")
+                        msg.classList.remove("invalid_msg")
+                        msg.classList.add("valid_msg")
+                        msg.innerHTML = "Credenciais alteradas com sucesso!"
+                    })
+                    break;
             }
         })
     })
