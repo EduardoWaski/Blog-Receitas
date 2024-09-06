@@ -17,10 +17,13 @@
             <button type="submit"><img class="lupe_img" src="../static/img/lupe.png" alt=""></button>
         </div>
 
-        <ul class="flex_row">
-            <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
-            <li class="ul_option"><img src="../static/img/profile.png" alt="Ícone de usuário">Username</li>
-        </ul>
+        <form action="/" method="post">
+            <ul class="flex_row">
+                <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
+                <li class="ul_option"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</li>
+                <li class="ul_option"><button type="submit" name="logout_btn" class="logout_btn">Logout</button></li>
+            </ul>
+        </form>
 
     </header>
 

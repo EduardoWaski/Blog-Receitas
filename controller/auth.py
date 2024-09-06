@@ -13,6 +13,8 @@ users = {
 @auth.route("/acesso", methods = ["GET", "POST"])
 def login_signup():
 
+    session.pop('_flashes', None)
+
     if request.method == "GET":
         return render_template('login_signup.html')
 
@@ -25,45 +27,26 @@ def login_signup():
     # Verificando se o usuário tentou fazer login ou cadastro
     if login_option:
 
-        # Verificação dos dados (Trocando o "in" pelo "==")
         # Essa parte deverá ser trocada depois, pois devemos analisar os usuários dentro do banco de dados
-        if (inputed_username == users['username']) and (inputed_password == users['password']):
+        if is_valid_login(inputed_username, inputed_password):
+
             session['username'] = inputed_username
             session['password'] = inputed_password
             return redirect(url_for('index.home_page'))
-        
-        # Retirada do "else", pois o "return" torna o "else" dispensável
-        flash('Nome de usuário e/ou senha incorretos!') 
-
 
     # Se for cadastro
     else:                   
-        print((inputed_username != users['username']))
-        print(inputed_password.isalnum())
-        if (inputed_username != users['username']) and (inputed_password.isalnum()): # Retirada do inputed_password.isalpha()
+        if is_valid_input(inputed_username):
+
+            session['username'] = inputed_username
+            session['password'] = inputed_password
             
             # Criando um novo usuário a partir da classe
             new_user = User(inputed_username, inputed_password).__dict__
-            users_collection.insert_one(new_user) # Método insert_one corrigido (insertOne -> insert_one)
-
-            # Não inserir dentro da sessão até o usuário fazer login
-            # session['username'] = inputed_username
-            # session['password'] = inputed_password
-            
-            flash("Usuário criado com sucesso!")
-
-        flash('Nome de usuário digitado já existe!')
-    
+            users_collection.insert_one(new_user)
+            return redirect(url_for(f'index.home_page'))
+        
     return render_template('login_signup.html')
-
-
-
-
-# Para existir uma outra função signup, deveria ter uma outra rota (@auth.route)
-# def sign_up():
-#     if request.method == "POST":
-#         created_username = request.form['username']
-#         created_password = request.form['password']
 
     
 

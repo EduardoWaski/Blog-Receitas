@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, jsonify, make_response
 from models.db_config import *
-from .auxiliar import is_valid_password
+from .auxiliar import *
 from models.models import * # Importando apenas para criar um usuário teste. Deve ser removido depois
 
 profile = Blueprint("profile", __name__)
@@ -29,40 +29,46 @@ def profile_page():
 def profile_page_post():
     
     # Recuperando o formulário e os valores nele colocados
-    inputed_form = request.form
+    inputed_form = request.get_json()
 
-    new_username = inputed_form.get("new_username")
-    new_password = inputed_form.get("new_password")
-    inputed_password = inputed_form.get("password")
+
+    inputed_new_username = inputed_form["inputed_new_username"]
+    inputed_new_password = inputed_form["inputed_new_password"]
+    inputed_password = inputed_form["inputed_password"]
+    pressed_btn = inputed_form["pressed_btn"]
+
+    print(inputed_new_username, inputed_new_password, inputed_password, pressed_btn)
 
     # Recuperando o usuário logado
     logged_username = session["username"]
     logged_password = session["password"]
 
-    # Verificando se a senha colocada está correta
-    if not is_valid_password(logged_password, inputed_password):
-        return "Not valid password"
+
+    # # Verificando se a senha colocada está correta
+    # if not is_valid_password(logged_password, inputed_password):
+    #     return make_response(jsonify({"status": "invalid_password"}))
     
-    if "delete_account_bt" in inputed_form:
+    if pressed_btn == "delete_account_btn":
         users_collection.delete_one({"username": logged_username})
         session.clear()
 
-        return "User deleted"
-
+        return make_response(jsonify({"status": "user_deleted"}))
 
     # Trocando username/senha
 
     filter = {"username": logged_username}
 
-    if new_username:
-        users_collection.update_one(filter, {"$set": {"username": new_username}})
-        session["username"] = new_username
+    if pressed_btn == "edit_username_btn":
+        users_collection.update_one(filter, {"$set": {"username": inputed_new_username}})
+        session["username"] = inputed_new_username
 
-        return "Username updated"
+        return make_response(jsonify({"status": "username_changed"}))
     
-    if new_password:
-        users_collection.update_one(filter, {"$set": {"password": new_password}})
-        session["password"] = new_password
+    if pressed_btn == "edit_password_btn":
+        users_collection.update_one(filter, {"$set": {"password": inputed_new_password}})
+        session["password"] = inputed_new_password
 
-        return "Pass updated"
+        return make_response(jsonify({"status": "password_changed"}))
+    
+    return make_response(jsonify({"status": "default"}))
     
