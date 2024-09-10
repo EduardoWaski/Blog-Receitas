@@ -24,10 +24,14 @@ def admin_post():
 
     # Recuperando o usuário do banco de dados
     user = users_collection.find_one({"username": pressed_user})
-    print(user)
 
     if pressed_btn == "view_btn":
         return render_template("admin_view.html", user=user)
 
     if pressed_btn == "delete_btn":
-        pass
+
+        # Deletando o usuário
+        database.users_collection.delete_one({'username': pressed_user})
+        flash(f'Usuário "{pressed_user}" foi deletado ')
+    
+        return render_template("admin.html")
