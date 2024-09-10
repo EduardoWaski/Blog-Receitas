@@ -9,18 +9,17 @@
 </head>
 <body>
     <header class="header">
-        <a href="index.html"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
+        <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
 
         <ul class="flex_row">
             <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
-            <li class="ul_option"><img src="../static/img/profile.png" alt="Ícone de usuário">Username</li>
         </ul>
     </header>
 
     <main>
         <div class="user_info">
             <img class="profile_img" src="../static/img/user_profile_img.png" alt="Foto Perfil">
-            <h1>Username</h1>
+            <h1>{{ session["username"] }}</h1>
         </div>
 
     <!--ÁREA DE MUDANÇA DE DADOS-->

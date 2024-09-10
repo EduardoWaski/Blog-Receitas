@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    <link rel="stylesheet" href="../static/css/admin.css">
+</head>
+<body>
+    <main>
+
+        <div class="users_container">
+
+            {% for user in users %}
+
+            <form class="user_container" method="post" action="/admin">
+                <h2 class="username">{{ user["username"] }}</h2>
+
+                <div class="user_options">
+                    <button name="view_btn" value="{{ user['username'] }}" type="submit" class="view_btn"><img src="../static/img/view_icon.png"></button>
+                    <button name="edit_btn" value="{{ user['username'] }}" type="submit" class="edit_btn"><img src="../static/img/edit_icon.png"></button>
+                    <button name="delete_btn" value="{{ user['username'] }}" type="submit" class="delete_btn"><img src="../static/img/trash_can_icon.png"></button>
+                </div>
+            </form>
+            {% endfor %}
+
+        </div>
+
+    </main>
+</body>
+</html>

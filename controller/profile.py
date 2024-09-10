@@ -10,7 +10,7 @@ def profile_page():
 
     if "username" in session:
         return render_template("profile_page.html")
-    return redirect(url_for("auth.login_page"))
+    return redirect(url_for("auth.login_signup"))
 
 # ------------------------------------- MÉTODO POST DO PERFIL -----------------------------------------------
 

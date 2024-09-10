@@ -10,7 +10,7 @@
 <body>
     <header class="header">
 
-        <a href="index.html"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
+        <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
 
         <div class="input_div">
             <input class="search_input" type="text" placeholder="Pesquise pelas suas receitas favoritas!" name="search" id="search">
@@ -19,7 +19,7 @@
 
         <ul class="flex_row">
             <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
-            <li class="ul_option"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</li>
+            <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
             <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>
         </ul>
 

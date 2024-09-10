@@ -33,6 +33,13 @@ body {
     border-bottom: 1px solid black;
 }
 
+a {
+    display: flex;
+    align-items: center;
+    color: #551A8B;
+    text-decoration: none;
+}
+
 .flex_row {
     display: flex;
     list-style: none;

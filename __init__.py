@@ -18,5 +18,8 @@ app.register_blueprint(profile)
 from controller.logout import logout
 app.register_blueprint(logout)
 
+from controller.admin import admin
+app.register_blueprint(admin)
+
 if __name__ == "__main__":
     app.run(debug=True)
