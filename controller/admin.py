@@ -22,15 +22,26 @@ def admin_post():
     pressed_btn = list(form.keys())[0]
     pressed_user = form.get(pressed_btn)
 
+    edited_username = ...
     # Implementar a lógica aqui
 
     if pressed_btn == "view_btn":
-        pass
+
+        return database.users_collection.find().pretty()
 
     if pressed_btn == "edit_btn":
-        pass
+        flash(f'O nome de "{pressed_user}" foi mudado para "{edited_username}"')
+
+        return database.users_collection.update_one(
+            {'username' : pressed_user},
+            {'$set': {'username': edited_username}}
+        )
 
     if pressed_btn == "delete_btn":
-        pass
+        flash(f'Usuário "{pressed_user}" foi deletado ')
+
+        return database.users_collection.delete_one(
+            {'username': pressed_user}
+        )
 
     return render_template("admin.html")
