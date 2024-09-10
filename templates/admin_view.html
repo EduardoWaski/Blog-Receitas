@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    <link rel="stylesheet" href="../static/css/admin_view.css">
+</head>
+<body>
+    <main>
+
+        <div class="user_container">
+
+            <div class="container_header">
+                <a href="/admin" class="arrow_icon"><img src="../static/img/arrow_icon.png"></a>
+                <h2>Informações do usuário</h2>
+            </div>
+
+            <form class="infos_container" method="post">
+
+                <div class="edit_radios_container">
+                    <label class="radio_label">Editar</label>
+                    <input type="radio" name="edit_radio" value="true">
+                    
+                    <label class="radio_label">Não editar</label>
+                    <input type="radio" name="edit_radio" value="false" checked>
+                </div>
+
+                <div class="info">
+                    <label>Nome do usuário:</label>
+                    <input type="text" value="{{user['username']}}">
+                </div>
+
+                <div class="info">
+                    <label>Senha:</label>
+                    <input type="text" value="{{user['password']}}">
+                </div>
+
+                <div class="info">
+                    <label>Receitas favoritas:</label>
+                    <input type="text" value="{{user['favourite_receipts']}}">
+                </div>
+
+                <div class="info">
+                    <p>É admin:</p>
+                    
+                    {% if user['is_admin'] %}
+
+                        <label class="radio_label">Sim</label>
+                        <input type="radio" name="is_admin_radio" value="true" checked>
+                        
+                        <label class="radio_label">Não</label>
+                        <input type="radio" name="is_admin_radio" value="false">
+
+                    {% else %}
+
+                        <label class="radio_label">Sim</label>
+                        <input type="radio" name="is_admin_radio" value="true">
+                        
+                        <label class="radio_label">Não</label>
+                        <input type="radio" name="is_admin_radio" value="false" checked>
+
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="ok_btn">OK</button>
+            </form>
+
+        </div>
+
+    </main>
+
+    <script src="../static/js/admin_view.js"></script>
+</body>
+</html>

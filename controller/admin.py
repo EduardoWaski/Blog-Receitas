@@ -22,15 +22,12 @@ def admin_post():
     pressed_btn = list(form.keys())[0]
     pressed_user = form.get(pressed_btn)
 
-    # Implementar a lógica aqui
+    # Recuperando o usuário do banco de dados
+    user = users_collection.find_one({"username": pressed_user})
+    print(user)
 
     if pressed_btn == "view_btn":
-        pass
-
-    if pressed_btn == "edit_btn":
-        pass
+        return render_template("admin_view.html", user=user)
 
     if pressed_btn == "delete_btn":
         pass
-
-    return render_template("admin.html")
