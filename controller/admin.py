@@ -9,10 +9,19 @@ admin = Blueprint('admin', __name__)
 def admin_get():
 
     session.pop('_flashes', None)
+    session_username = session["username"]
 
-    users = users_collection.find()
-    return render_template("admin.html", users=users)
+    if not session_username:
+        return redirect(url_for("auth.login_signup"))
 
+    logged_user = users_collection.find_one({"username": session_username})
+
+    if logged_user["is_admin"]:
+        users = users_collection.find()
+        return render_template("admin.html", users=users)
+    
+    return redirect(url_for("index.home_page"))
+        
 
 @admin.route("/admin", methods=["POST"])
 def admin_post():
