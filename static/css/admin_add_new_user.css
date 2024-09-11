@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Inter", sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.user_container {
+    overflow: auto;
+    width: 600px;
+    padding: 0 1rem 1rem 1rem;
+    border: 1px solid black;
+}
+
+.container_header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.arrow_icon {
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+
+label, p {
+    text-wrap: nowrap;
+}
+
+label:not(.radio_label), p {
+    font-weight: bold;
+    margin: 0 15px 0 0;
+}
+
+input[type=text] {
+    height: 30px;
+    padding: 0 5px;
+    width: 100%;
+}
+
+input[type=radio] {
+    margin: 0 10px 0 2px;
+}
+
+.edit_radios_container {
+    width: fit-content;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.ok_btn {
+    width: 100%;
+    background-color: #188B1C;
+    color: white;
+    height: 35px;
+    border: 1px solid black;
+    outline: 0;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.ok_btn:hover {
+    background-color: #137016;
+}
+
+.ok_btn:disabled {
+    display: none;
+}
+
+.flash_msg {
+    color: rgb(3, 110, 3);
+    font-weight: bold;
+    margin: 0 0 30px 0;
+}
