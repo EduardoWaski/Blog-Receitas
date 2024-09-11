@@ -10,6 +10,12 @@
 <body>
     <main>
 
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p class="flash_msg">{{messages[-1]}}</p>
+            {% endif %}
+        {% endwith %}
+
         <div class="users_container">
 
             {% for user in users %}
