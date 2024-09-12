@@ -6,7 +6,8 @@ class User:
         self.is_admin = is_admin
 
 class Receipt:
-    def __init__(self, name, preparation, ingredients, category):
+    def __init__(self, image, name, preparation, ingredients, category):
+        self.image = image
         self.name = name
         self.preparation = preparation
         self.ingredients = ingredients
