@@ -83,6 +83,9 @@ def is_admin():
     session_username = session["username"]
     logged_user = users_collection.find_one({"username": session_username})
 
+    if not logged_user:
+        return False
+
     if not logged_user["is_admin"]:
         return False
     

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <main>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <p class="flash_msg">{{messages[-1]}}</p>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    {% block script %}
+    {% endblock %}
+    <script src="../static/js/admin_user_info.js"></script>
+</body>
+</html>

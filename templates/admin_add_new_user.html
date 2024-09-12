@@ -1,63 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+{% extends "base_admin.html" %}
 
-    <link rel="stylesheet" href="../static/css/admin_add_new_user.css">
-</head>
-<body>
-    <main>
+{% block css %}
+<link rel="stylesheet" href="../static/css/admin_base.css">
+{% endblock %}
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <p class="flash_msg">{{messages[-1]}}</p>
-        {% endif %}
-    {% endwith %}
-        
+{% block content %}
+<div class="user_container">
 
-        <div class="user_container">
+    <div class="container_header">
+        <a href="/admin" class="arrow_icon"><img src="../static/img/arrow_icon.png"></a>
+        <h2>Adicionar novo usuário</h2>
+    </div>
 
-            <div class="container_header">
-                <a href="/admin" class="arrow_icon"><img src="../static/img/arrow_icon.png"></a>
-                <h2>Adicionar novo usuário</h2>
-            </div>
+    <form class="infos_container" method="post">
 
-            <form class="infos_container" method="post">
+        <div class="info">
+            <label>Nome do usuário:</label>
+            <input name="username" type="text">
+        </div>
 
-                <div class="info">
-                    <label>Nome do usuário:</label>
-                    <input name="username" type="text">
-                </div>
+        <div class="info">
+            <label>Senha:</label>
+            <input name="password" type="text">
+        </div>
 
-                <div class="info">
-                    <label>Senha:</label>
-                    <input name="password" type="text">
-                </div>
+        <div class="info">
+            <label>Receitas favoritas:</label>
+            <input name="favourite_receipts" type="text">
+        </div>
 
-                <div class="info">
-                    <label>Receitas favoritas:</label>
-                    <input name="favourite_receipts" type="text">
-                </div>
+        <div class="info">
+            <p>É admin:</p>
 
-                <div class="info">
-                    <p>É admin:</p>
-
-                    <label class="radio_label">Sim</label>
-                    <input type="radio" name="is_admin_radio" value="true">
-                    
-                    <label class="radio_label">Não</label>
-                    <input type="radio" name="is_admin_radio" value="false" checked>
-
-                </div>
-
-                <button type="submit" class="ok_btn">OK</button>
-            </form>
+            <label class="radio_label">Sim</label>
+            <input type="radio" name="is_admin_radio" value="true">
+            
+            <label class="radio_label">Não</label>
+            <input type="radio" name="is_admin_radio" value="false" checked>
 
         </div>
 
-    </main>
+        <button type="submit" class="ok_btn">OK</button>
+    </form>
 
-</body>
-</html>
+</div>
+
+{% endblock %}
+
+{% block script %}{% endblock %}

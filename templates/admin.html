@@ -1,40 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+{% extends "base_admin.html" %}
 
-    <link rel="stylesheet" href="../static/css/admin.css">
-</head>
-<body>
-    <main>
+{% block css %}
+<link rel="stylesheet" href="../static/css/admin.css">
+{% endblock %}
 
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <p class="flash_msg">{{messages[-1]}}</p>
-            {% endif %}
-        {% endwith %}
+{% block content %}
+<form class="users_container" method="post", action="/admin">
 
-        <form class="users_container" method="post", action="/admin">
+    {% for user in users %}
 
-            {% for user in users %}
+    <div class="user_container">
+        <h2 class="username">{{ user["username"] }}</h2>
 
-            <div class="user_container">
-                <h2 class="username">{{ user["username"] }}</h2>
+        <div class="user_options">
+            <button name="view_btn" value="{{ user['username'] }}" type="submit" class="view_btn"><img src="../static/img/view_icon.png"></button>
+            <button name="delete_btn" value="{{ user['username'] }}" type="submit" class="delete_btn"><img src="../static/img/trash_can_icon.png"></button>
+        </div>
 
-                <div class="user_options">
-                    <button name="view_btn" value="{{ user['username'] }}" type="submit" class="view_btn"><img src="../static/img/view_icon.png"></button>
-                    <button name="delete_btn" value="{{ user['username'] }}" type="submit" class="delete_btn"><img src="../static/img/trash_can_icon.png"></button>
-                </div>
+    </div>
+    {% endfor %}
 
-            </div>
-            {% endfor %}
+    <button name="add_new_user" type="submit" class="add_new_user">Adicionar novo usuário</button>
 
-            <button name="add_new_user" type="submit" class="add_new_user">Adicionar novo usuário</button>
+</form>
+{% endblock %}
 
-        </form>
-
-    </main>
-</body>
-</html>
+{% block script %}{% endblock %}

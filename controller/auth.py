@@ -26,6 +26,7 @@ def login_signup():
 
             session['username'] = inputed_username
             session['password'] = inputed_password
+            session.permanent = True
             return redirect(url_for('index.home_page'))
 
     # Se for cadastro
@@ -34,6 +35,7 @@ def login_signup():
 
             session['username'] = inputed_username
             session['password'] = inputed_password
+            session.permanent = True
             
             # Criando um novo usuário a partir da classe
             new_user = User(inputed_username, inputed_password).__dict__

@@ -17,8 +17,6 @@ def admin_get():
     users = users_collection.find()
     return render_template("admin.html", users=users)
     
-    
-        
 
 @admin.route("/admin", methods=["POST"])
 def admin_post():
@@ -61,6 +59,8 @@ def user_info_get(username):
     if not is_admin():
         return redirect(url_for("index.home_page"))
     
+    session.pop('_flashes', None)
+    
     # Recuperando usuário do banco de dados
     user = users_collection.find_one({"username": username})
     return render_template("admin_user_info.html", user=user)
@@ -90,8 +90,11 @@ def user_info_post(username):
     users_collection.update_one(filter, {"$set": {"favourite_receipts": inputed_favourite_receipts}})
     users_collection.update_one(filter, {"$set": {"is_admin": inputed_is_admin_radio}})
 
+    flash(f"Usuário editado com sucesso!")
 
-    return redirect(url_for("admin.admin_get"))
+    # Recuperando o usuário no banco de dados
+    user = users_collection.find_one({"username": username})
+    return render_template("admin_user_info.html", user=user)
 
 
 # ----------------------------- ÁREA DO ADD_NEW_USER ----------------------------------
@@ -128,5 +131,5 @@ def add_new_user_post():
     new_user = User(inputed_username, inputed_password, inputed_favourite_receipts, inputed_is_admin_radio).__dict__
     users_collection.insert_one(new_user)
     
-    flash("Usuário criado com sucesso!")
+    flash(f'Usuário "{new_user.get("username")}" criado com sucesso!')
     return render_template("admin_add_new_user.html")
