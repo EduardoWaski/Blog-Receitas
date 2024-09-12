@@ -1,9 +1,9 @@
 class User:
-    def __init__(self, username, password):
+    def __init__(self, username, password, favourite_receipts=[], is_admin=False):
         self.username = username
         self.password = password
-        self.favourite_receipts = []
-        self.is_admin = False
+        self.favourite_receipts = favourite_receipts
+        self.is_admin = is_admin
 
 class Receipt:
     def __init__(self, image, name, preparation, ingredients, category):

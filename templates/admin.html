@@ -16,21 +16,24 @@
             {% endif %}
         {% endwith %}
 
-        <div class="users_container">
+        <form class="users_container" method="post", action="/admin">
 
             {% for user in users %}
 
-            <form class="user_container" method="post" action="/admin">
+            <div class="user_container">
                 <h2 class="username">{{ user["username"] }}</h2>
 
                 <div class="user_options">
                     <button name="view_btn" value="{{ user['username'] }}" type="submit" class="view_btn"><img src="../static/img/view_icon.png"></button>
                     <button name="delete_btn" value="{{ user['username'] }}" type="submit" class="delete_btn"><img src="../static/img/trash_can_icon.png"></button>
                 </div>
-            </form>
+
+            </div>
             {% endfor %}
 
-        </div>
+            <button name="add_new_user" type="submit" class="add_new_user">Adicionar novo usuário</button>
+
+        </form>
 
     </main>
 </body>

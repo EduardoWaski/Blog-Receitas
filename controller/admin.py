@@ -8,14 +8,24 @@ admin = Blueprint('admin', __name__)
 @admin.route("/admin", methods=["GET"])
 def admin_get():
 
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
+    
     session.pop('_flashes', None)
-
+    
     users = users_collection.find()
     return render_template("admin.html", users=users)
-
+    
+    
+        
 
 @admin.route("/admin", methods=["POST"])
 def admin_post():
+
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
 
     # Pegando o form ao apertar um botão
     form = request.form.to_dict()
@@ -26,6 +36,9 @@ def admin_post():
 
     if pressed_btn == "view_btn":
         return redirect(url_for("admin.user_info_get", username=pressed_user))
+    
+    if pressed_btn == "add_new_user":
+        return redirect(url_for("admin.add_new_user_get"))
 
     if pressed_btn == "delete_btn":
 
@@ -43,14 +56,23 @@ def admin_post():
 
 @admin.route("/admin/<username>", methods=["GET"])
 def user_info_get(username):
+
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
     
     # Recuperando usuário do banco de dados
     user = users_collection.find_one({"username": username})
-    return render_template("admin_view.html", user=user)
+    return render_template("admin_user_info.html", user=user)
 
 
 @admin.route("/admin/<username>", methods=["POST"])
 def user_info_post(username):
+
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
+    
     
     form = request.form.to_dict()
     
@@ -58,7 +80,7 @@ def user_info_post(username):
     inputed_username = form.get("username")
     inputed_password = form.get("password")
     inputed_favourite_receipts = form.get("favourite_receipts")
-    inputed_is_admin_radio = bool(form.get("is_admin_radio"))
+    inputed_is_admin_radio = True if form.get("is_admin_radio") == "true" else False
 
     # Recuperando o usuário do banco de dados
     filter = {"username": username}
@@ -70,3 +92,41 @@ def user_info_post(username):
 
 
     return redirect(url_for("admin.admin_get"))
+
+
+# ----------------------------- ÁREA DO ADD_NEW_USER ----------------------------------
+
+@admin.route("/admin/add_new_user", methods=["GET"])
+def add_new_user_get():
+
+    session.pop('_flashes', None)
+
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
+    
+    # Recuperando usuário do banco de dados
+    return render_template("admin_add_new_user.html")
+
+
+@admin.route("/admin/add_new_user", methods=["POST"])
+def add_new_user_post():
+
+    # Verifica se o usuário logado é admin
+    if not is_admin():
+        return redirect(url_for("index.home_page"))
+    
+    form = request.form.to_dict()
+    
+    # Recuperando as informações do formulário
+    inputed_username = form.get("username")
+    inputed_password = form.get("password")
+    inputed_favourite_receipts = form.get("favourite_receipts")
+    inputed_is_admin_radio = True if form.get("is_admin_radio") == "true" else False
+
+    # Criando um novo usuário a partir da classe
+    new_user = User(inputed_username, inputed_password, inputed_favourite_receipts, inputed_is_admin_radio).__dict__
+    users_collection.insert_one(new_user)
+    
+    flash("Usuário criado com sucesso!")
+    return render_template("admin_add_new_user.html")
