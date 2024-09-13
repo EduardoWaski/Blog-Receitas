@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas de Vó</title>
+    <link rel="stylesheet" href="../static/css/receipt_page.css">
+    <link rel="icon" type="image/x-icon" href="../static/img/website_logo.png">
+</head>
+<body>
+    <header class="header">
+
+        <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
+
+        <ul class="flex_row">
+            <form method="post" action="/receitas">
+                <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">
+                    <div class="form_select">
+                        <select name="receipt" id="receipt" >
+                            <optgroup label = "Receitas">
+                                <option value="Bovinos">Bovinos</option>
+                                <option value="Pescados">Pescados</option>
+                                <option value="Aves">Aves</option>
+                                <option value="Bolos">Bolos</option>
+                                <option value="Doces">Doces</option>
+                            </optgroup>
+                        </select>
+                        <button type="submit">
+                            Enviar
+                        </button>
+                    </div>
+                </li>
+            </form>
+            <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
+            <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>
+        </ul>
+
+    </header>
+    <main>
+        {%for recipe in category_recipes%}
+            <h1>{{recipe['name']}}</h1>
+            <img src="{{recipe['image']}}" alt="Imagem da Receita">
+            <h2><u>Ingredientes:</u></h2>
+            <p>{{recipe['ingredients']}}</p>
+            <h2><u>Modo de Preparo:</u></h2>
+            <p>{{recipe['preparation']}}</p>
+        {%endfor%}
+
+
+    </main>
+    
+
+      <!--RODAPÉ DA PÁGINA-->
+
+    <footer>
+        <div class="dev_names"> 
+            <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
+            <h5>Eduardo Silva Waski - 231011284</h5>
+            <h5>José Victor Gabriel - 231027121</h5>
+        </div>
+        <div class="unb">
+            <h2>Universidade de Brasília</h2>
+            <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -40,7 +40,7 @@ Papel alumínio o quanto baste
 "Bovinos"
 )
 
-if not receipt_collection['name'].find_one(cupim_queijo.name):
+if not receipt_collection.find_one({'name':cupim_queijo.name}):
 
     receipt_collection.insert_one(cupim_queijo.__dict__)
 
@@ -77,7 +77,7 @@ Torradas de sua preferência a gosto""",
 
 )
 
-if not receipt_collection['name'].find_one(steak_tartare.name):
+if not receipt_collection.find_one({'name': steak_tartare.name}):
 
     receipt_collection.insert_one(steak_tartare.__dict__)
 
@@ -132,7 +132,7 @@ Sal a gosto""",
 "Bovinos"
 )
 
-if not receipt_collection['name'].find_one(lingua_boi.name):
+if not receipt_collection.find_one({'name': lingua_boi.name}):
 
     receipt_collection.insert_one(lingua_boi.__dict__)
 
@@ -170,7 +170,7 @@ Sal a gosto
 
 )
 
-if not receipt_collection['name'].find_one(lasanha_frango.name):
+if not receipt_collection.find_one({'name': lasanha_frango.name}):
     receipt_collection.insert_one(lasanha_frango.__dict__)
 
 
@@ -198,7 +198,7 @@ Sal a gosto""",
 "Aves"
 )
 
-if not receipt_collection['name'].find_one(vatapa_frango.name):
+if not receipt_collection.find_one({'name': vatapa_frango.name}):
     receipt_collection.insert_one(vatapa_frango.__dict__)
 
 sopa_frango = Receipt(
@@ -230,7 +230,7 @@ Queijo ralado a gosto""",
 
 )
 
-if not receipt_collection['name'].find_one({'name': sopa_frango.name}):
+if not receipt_collection.find_one({'name': sopa_frango.name}):
     receipt_collection.insert_one(sopa_frango.__dict__)
 
 """"
@@ -269,7 +269,7 @@ Pimenta-do-reino à gosto""",
 "Pescados"
 )
 
-if not receipt_collection['name'].find_one({'name': salmao_alcaparra.name}):
+if not receipt_collection.find_one({'name': salmao_alcaparra.name}):
     receipt_collection.insert_one(salmao_alcaparra.__dict__)
 
 arroz_camarao = Receipt(
@@ -307,7 +307,7 @@ Sal """,
 "Pescados"
 )
 
-if not receipt_collection['name'].find_one({'name': arroz_camarao.name}):
+if not receipt_collection.find_one({'name': arroz_camarao.name}):
     receipt_collection.insert_one(arroz_camarao.__dict__)
 
 
@@ -358,7 +358,7 @@ Pimenta-do-reino moída na hora a gosto
 )
 
 
-if not receipt_collection['name'].find_one({'name': file_tilapia.name}):
+if not receipt_collection.find_one({'name': file_tilapia.name}):
     receipt_collection.insert_one(file_tilapia.__dict__)
 
 
@@ -411,7 +411,7 @@ Morangos para decorar""",
 "Bolos"
 )
 
-if not receipt_collection['name'].find_one({'name': bolo_chocolate_morango.name}):
+if not receipt_collection.find_one({'name': bolo_chocolate_morango.name}):
     receipt_collection.insert_one(bolo_chocolate_morango.__dict__)
 
 
@@ -440,7 +440,7 @@ Leve ao forno por 40 minutos ou até o bolo crescer e dourar. Espere amornar e d
 "Bolos"
 )
 
-if not receipt_collection['name'].find_one({'name': bolo_banana.name}):
+if not receipt_collection.find_one({'name': bolo_banana.name}):
     receipt_collection.insert_one(bolo_banana.__dict__)
 
 bolo_ingles = Receipt(
@@ -467,7 +467,7 @@ Retire o bolo do forno e espere 1 hora antes de desenformar. Espere esfriar comp
 "Bolos"
 )
 
-if not receipt_collection['name'].find_one({'name': bolo_ingles.name}):
+if not receipt_collection.find_one({'name': bolo_ingles.name}):
     receipt_collection.insert_one(bolo_ingles.__dict__)
 
 
@@ -498,7 +498,7 @@ Açúcar de confeiteiro""",
 "Doces"
 )
 
-if not receipt_collection['name'].find_one({'name': doce_amendoim.name}):
+if not receipt_collection.find_one({'name': doce_amendoim.name}):
     receipt_collection.insert_one(doce_amendoim.__dict__)
 
 mousse_maracuja = Receipt(
@@ -525,7 +525,7 @@ Retire as taças da geladeira, adicione o crumble por cima e decore com folhas d
 )
 
 
-if not receipt_collection['name'].find_one({'name': mousse_maracuja.name}):
+if not receipt_collection.find_one({'name': mousse_maracuja.name}):
     receipt_collection.insert_one(mousse_maracuja.__dict__)
 
 pave_pacoca = Receipt(
@@ -559,3 +559,8 @@ Amendoim torrado sem pele a gosto para decorar""",
 
 "Doces"
 )
+
+
+if not receipt_collection.find_one({'name': pave_pacoca.name}):
+    receipt_collection.insert_one(pave_pacoca.__dict__)
+

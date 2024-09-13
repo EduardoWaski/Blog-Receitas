@@ -4,7 +4,7 @@ from datetime import timedelta
 app = Flask(__name__)
 # Definindo a chave secreta para cookies/sessões/formulários
 app.config['SECRET_KEY'] = "secreto demais"
-app.config["PERMANENT_SESSION_LIFEITME"] = timedelta(minutes=15)
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=15)
 
 # Registrando as blueprints
 from controller.auth import auth
@@ -21,6 +21,9 @@ app.register_blueprint(logout)
 
 from controller.admin import admin
 app.register_blueprint(admin)
+
+from controller.receipt_page import receipt_page
+app.register_blueprint(receipt_page)
 
 if __name__ == "__main__":
     app.run(debug=True)
