@@ -40,9 +40,9 @@ Papel alumínio o quanto baste
 "Bovinos"
 )
 
-if not receipt_collection.find_one({'name':cupim_queijo.name}):
+#if not receipt_collection.find_one({'name':cupim_queijo.name}):
 
-    receipt_collection.insert_one(cupim_queijo.__dict__)
+receipt_collection.insert_one(cupim_queijo.__dict__)
 
 steak_tartare = Receipt(
 "../static/img/receipt_images/steak_tartare.jpeg",
@@ -77,9 +77,9 @@ Torradas de sua preferência a gosto""",
 
 )
 
-if not receipt_collection.find_one({'name': steak_tartare.name}):
+#if not receipt_collection.find_one({'name': steak_tartare.name}):
 
-    receipt_collection.insert_one(steak_tartare.__dict__)
+receipt_collection.insert_one(steak_tartare.__dict__)
 
 
 
@@ -132,9 +132,9 @@ Sal a gosto""",
 "Bovinos"
 )
 
-if not receipt_collection.find_one({'name': lingua_boi.name}):
+#if not receipt_collection.find_one({'name': lingua_boi.name}):
 
-    receipt_collection.insert_one(lingua_boi.__dict__)
+receipt_collection.insert_one(lingua_boi.__dict__)
 
 
 '''

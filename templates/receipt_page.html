@@ -38,14 +38,27 @@
     </header>
     <main>
         {%for recipe in category_recipes%}
-            <h1>{{recipe['name']}}</h1>
-            <img src="{{recipe['image']}}" alt="Imagem da Receita">
-            <h2><u>Ingredientes:</u></h2>
-            <p>{{recipe['ingredients']}}</p>
-            <h2><u>Modo de Preparo:</u></h2>
-            <p>{{recipe['preparation']}}</p>
-        {%endfor%}
+            <article class="recipe">
 
+                <div>
+                    <h1>{{recipe['name']}}</h1>
+                    <div class="img_container">
+                        <img src="{{recipe['image']}}" alt="Imagem da Receita">
+                    </div>
+                </div>
+
+                <div class="recipe_info_container">
+                    <h2><u>Ingredientes:</u></h2>
+                    <p>{{recipe['ingredients']}}</p>
+                </div>
+
+                <div class="recipe_info_container">
+                    <h2><u>Modo de Preparo:</u></h2>
+                    <p>{{recipe['preparation']}}</p>
+                </div>
+
+            </article>
+        {%endfor%}
 
     </main>
     
@@ -63,6 +76,6 @@
             <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
         </div>
     </footer>
-    
+
 </body>
 </html>

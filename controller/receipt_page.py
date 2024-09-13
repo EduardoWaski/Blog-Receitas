@@ -14,7 +14,5 @@ def receipt_page_get():
 def receipt_page_post():
     category_chosen = request.form.get("receipt")
     category_recipes = list(receipt_collection.find({"category": category_chosen}))
-    print(category_recipes)
-    
     return render_template("receipt_page.html", category_recipes = category_recipes) # A PRIMEIRA VAR É COMO VAI SER CHAMADA NO HTML E A SEGUNDA É A VARIAVEL DA ROTA
 
