@@ -79,7 +79,7 @@ def user_info_post(username):
     # Recuperando as informações do formulário
     inputed_username = form.get("username")
     inputed_password = form.get("password")
-    inputed_favourite_receipts = form.get("favourite_receipts")
+    inputed_favourite_recipes = form.get("favourite_recipes")
     inputed_is_admin_radio = True if form.get("is_admin_radio") == "true" else False
 
     # Recuperando o usuário do banco de dados
@@ -87,7 +87,7 @@ def user_info_post(username):
     # Atualizando os dados do usuário
     users_collection.update_one(filter, {"$set": {"username": inputed_username}})
     users_collection.update_one(filter, {"$set": {"password": inputed_password}})
-    users_collection.update_one(filter, {"$set": {"favourite_receipts": inputed_favourite_receipts}})
+    users_collection.update_one(filter, {"$set": {"favourite_recipes": inputed_favourite_recipes}})
     users_collection.update_one(filter, {"$set": {"is_admin": inputed_is_admin_radio}})
 
     flash(f"Usuário editado com sucesso!")
@@ -124,11 +124,11 @@ def add_new_user_post():
     # Recuperando as informações do formulário
     inputed_username = form.get("username")
     inputed_password = form.get("password")
-    inputed_favourite_receipts = form.get("favourite_receipts")
+    inputed_favourite_recipes = form.get("favourite_recipes")
     inputed_is_admin_radio = True if form.get("is_admin_radio") == "true" else False
 
     # Criando um novo usuário a partir da classe
-    new_user = User(inputed_username, inputed_password, inputed_favourite_receipts, inputed_is_admin_radio).__dict__
+    new_user = User(inputed_username, inputed_password, inputed_favourite_recipes, inputed_is_admin_radio).__dict__
     users_collection.insert_one(new_user)
     
     flash(f'Usuário "{new_user.get("username")}" criado com sucesso!')

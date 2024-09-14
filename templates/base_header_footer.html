@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receitas de Vó</title>
-    <link rel="stylesheet" href="../static/css/receipt_page.css">
-    <link rel="icon" type="image/x-icon" href="../static/img/website_logo.png">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="../static/css/base_header_footer.css">
+    {% block css %}
+    {% endblock %}
+
+    <link rel="icon" href="../static/img/website_logo.png" >
 </head>
 <body>
     <header class="header">
@@ -13,10 +17,10 @@
         <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
 
         <ul class="flex_row">
-            <form method="post" action="/receitas">
+            <form class="header_form" method="post" action="/receitas">
                 <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">
                     <div class="form_select">
-                        <select name="receipt" id="receipt" >
+                        <select name="recipe" id="recipe" >
                             <optgroup label = "Receitas">
                                 <option value="Bovinos">Bovinos</option>
                                 <option value="Pescados">Pescados</option>
@@ -25,45 +29,19 @@
                                 <option value="Doces">Doces</option>
                             </optgroup>
                         </select>
-                        <button type="submit">
-                            Enviar
-                        </button>
+                        <button class="header_btn" type="submit">Enviar</button>
                     </div>
                 </li>
             </form>
+
             <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
             <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>
         </ul>
 
     </header>
-    <main>
-        {%for recipe in category_recipes%}
-            <article class="recipe">
 
-                <div>
-                    <h1>{{recipe['name']}}</h1>
-                    <div class="img_container">
-                        <img src="{{recipe['image']}}" alt="Imagem da Receita">
-                    </div>
-                </div>
-
-                <div class="recipe_info_container">
-                    <h2><u>Ingredientes:</u></h2>
-                    <p>{{recipe['ingredients']}}</p>
-                </div>
-
-                <div class="recipe_info_container">
-                    <h2><u>Modo de Preparo:</u></h2>
-                    <p>{{recipe['preparation']}}</p>
-                </div>
-
-            </article>
-        {%endfor%}
-
-    </main>
-    
-
-      <!--RODAPÉ DA PÁGINA-->
+    {% block content %}
+    {% endblock %}
 
     <footer>
         <div class="dev_names"> 
@@ -77,5 +55,8 @@
         </div>
     </footer>
 
+    {% block script %}
+    {% endblock %}
+    
 </body>
 </html>

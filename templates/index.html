@@ -1,81 +1,49 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receitas de Vó</title>
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="icon" type="image/x-icon" href="../static/img/website_logo.png">
-</head>
-<body>
-    <header class="header">
+{% extends 'base_header_footer.html'%}
 
-        <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
+{% block title %}Receitas de Vó{% endblock %}
 
-        <div class="input_div">
-            <input class="search_input" type="text" placeholder="Pesquise pelas suas receitas favoritas!" name="search" id="search">
-            <button type="submit"><img class="lupe_img" src="../static/img/lupe.png" alt=""></button>
-        </div>
+{% block css %}
+<link rel="stylesheet" href="../static/css/index.css">
+{% endblock %}
 
-        <ul class="flex_row">
-            <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
-            <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
-            <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>
-        </ul>
+{% block content %}
+<main>
 
-    </header>
+    <!--TÍTULO RECEITAS-->
 
-    <main>
+    <div class="homepage_title">
+        <hr><h1 style="text-align: center" >Receitas</h1><hr>
+    </div>
 
-        <!--TÍTULO RECEITAS-->
+    <!--CAIXAS DE RECEITAS-->
 
-        <div class="homepage_title">
-            <hr><h1 style="text-align: center" >Receitas</h1><hr>
-        </div>
+    <div class="container_boxes">
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita1</h2>
+        </article>
 
-        <!--CAIXAS DE RECEITAS-->
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita2</h2>
+        </article>
 
-        <div class="container_boxes">
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita1</h2>
-            </article>
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita3</h2>
+        </article>
 
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita2</h2>
-            </article>
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita4</h2>
+        </article>
 
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita3</h2>
-            </article>
-
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita4</h2>
-            </article>
-
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita5</h2>
-            </article>
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita5</h2>
+        </article>
 
 
-            <article class="receipt_box">
-                <h2 class="receipt_text">Receita6</h2>
-            </article>
-        </div>
-    </main>
+        <article class="recipe_box">
+            <h2 class="recipe_text">Receita6</h2>
+        </article>
+    </div>
+</main>
+{% endblock %}
 
-    <!--RODAPÉ DA PÁGINA-->
-
-    <footer>
-        <div class="dev_names"> 
-            <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
-            <h5>Eduardo Silva Waski - 231011284</h5>
-            <h5>José Victor Gabriel - 231027121</h5>
-        </div>
-        <div class="unb">
-            <h2>Universidade de Brasília</h2>
-            <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
-        </div>
-    </footer>
-    
-</body>
-</html>
+{% block script %}{% endblock %}

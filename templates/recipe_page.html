@@ -1,0 +1,37 @@
+{% extends 'base_header_footer.html' %}
+
+{% block title %}Receitas de Vó{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/recipe_page.css">
+{% endblock %}
+
+{% block content %}
+<main>
+    {%for recipe in category_recipes%}
+        <article class="recipe">
+
+            <div>
+                <h1>{{recipe['name']}}</h1>
+                <div class="img_container">
+                    <img src="{{recipe['image']}}" alt="Imagem da Receita">
+                </div>
+            </div>
+
+            <div class="recipe_info_container">
+                <h2><u>Ingredientes:</u></h2>
+                <p>{{recipe['ingredients']}}</p>
+            </div>
+
+            <div class="recipe_info_container">
+                <h2><u>Modo de Preparo:</u></h2>
+                <p>{{recipe['preparation']}}</p>
+            </div>
+
+        </article>
+    {%endfor%}
+
+</main>
+{% endblock %}
+
+{% block script %}{% endblock %}

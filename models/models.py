@@ -5,7 +5,7 @@ class User:
         self.favourite_receipts = favourite_receipts
         self.is_admin = is_admin
 
-class Receipt:
+class Recipe:
     def __init__(self, image, name, preparation, ingredients, category):
         self.image = image
         self.name = name

@@ -156,7 +156,7 @@ hr{
     
 }
 
-.receipt_box{
+.recipe_box{
     background-color: #d5cdcd7e  ;
     box-shadow: rgb(46, 44, 44, 0.75) 0 0 4px ;
     padding: 40px 0;
@@ -165,54 +165,11 @@ hr{
     margin-bottom: 0;
 }
 
-h2.receipt_text{
+h2.recipe_text{
     display: flex;
     justify-content: flex-start;
     position: relative;
     top: 100%;
     margin-left: 10%;
     font-size: medium;
-}
-
-/* ESTILO DO RODAPÉ */
-
-footer{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    background-color: #a0aba8;
-    box-shadow: 0 -1px 2px 1px;
-    padding: 1rem 2rem;
-    width: 100%;
-}
-
-.dev_names{
-    display:flex;
-    flex-flow: column nowrap;
-    color: darkgreen;
-    font-size: 1.6rem;
-    margin-right: 2rem;
-}
-
-.unb{
-    align-items: center;
-    display: flex;
-    color: rgb(26, 26, 122);
-    font-size: 1.6rem;
-}
-
-.img_unb{
-    max-height: 37px;
-    max-width: 75px;
-    height: auto;
-    width: auto;
-    margin-left: 20px;
-}
-
-.unb h2{
-    text-wrap: nowrap;
-}
-
-.dev_names h5{
-    text-wrap: nowrap;
 }

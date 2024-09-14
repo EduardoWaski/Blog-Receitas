@@ -5,8 +5,8 @@ from db_config import *
 BOVINOS
 '''
 
-cupim_queijo = Receipt(
-"../static/img/receipt_images/cupim_queijo.jpeg",
+cupim_queijo = Recipe(
+"../static/img/recipe_images/cupim_queijo.jpeg",
 
 "Cupim com Queijo",
 
@@ -40,12 +40,12 @@ Papel alumínio o quanto baste
 "Bovinos"
 )
 
-#if not receipt_collection.find_one({'name':cupim_queijo.name}):
+#if not recipes_collection.find_one({'name':cupim_queijo.name}):
 
-receipt_collection.insert_one(cupim_queijo.__dict__)
+recipes_collection.insert_one(cupim_queijo.__dict__)
 
-steak_tartare = Receipt(
-"../static/img/receipt_images/steak_tartare.jpeg",
+steak_tartare = Recipe(
+"../static/img/recipe_images/steak_tartare.jpeg",
 
 "Steak Tartare",
 
@@ -77,15 +77,15 @@ Torradas de sua preferência a gosto""",
 
 )
 
-#if not receipt_collection.find_one({'name': steak_tartare.name}):
+#if not recipes_collection.find_one({'name': steak_tartare.name}):
 
-receipt_collection.insert_one(steak_tartare.__dict__)
-
-
+recipes_collection.insert_one(steak_tartare.__dict__)
 
 
-lingua_boi = Receipt(
-"../static/img/receipt_images/lingua_boi.jpeg",
+
+
+lingua_boi = Recipe(
+"../static/img/recipe_images/lingua_boi.jpeg",
 
 "Língua de Boi",
 
@@ -132,17 +132,17 @@ Sal a gosto""",
 "Bovinos"
 )
 
-#if not receipt_collection.find_one({'name': lingua_boi.name}):
+#if not recipes_collection.find_one({'name': lingua_boi.name}):
 
-receipt_collection.insert_one(lingua_boi.__dict__)
+recipes_collection.insert_one(lingua_boi.__dict__)
 
 
 '''
 AVES
 '''
 
-lasanha_frango = Receipt(
-"../static/img/receipt_images/lasanha_frango.jpeg",
+lasanha_frango = Recipe(
+"../static/img/recipe_images/lasanha_frango.jpeg",
 
 "Lasanha de Frango",
 
@@ -170,12 +170,12 @@ Sal a gosto
 
 )
 
-if not receipt_collection.find_one({'name': lasanha_frango.name}):
-    receipt_collection.insert_one(lasanha_frango.__dict__)
+if not recipes_collection.find_one({'name': lasanha_frango.name}):
+    recipes_collection.insert_one(lasanha_frango.__dict__)
 
 
-vatapa_frango = Receipt(
-"../static/img/receipt_images/vatapa_frango.jpeg",
+vatapa_frango = Recipe(
+"../static/img/recipe_images/vatapa_frango.jpeg",
 
 "Vatapá de Frango",
 
@@ -198,11 +198,11 @@ Sal a gosto""",
 "Aves"
 )
 
-if not receipt_collection.find_one({'name': vatapa_frango.name}):
-    receipt_collection.insert_one(vatapa_frango.__dict__)
+if not recipes_collection.find_one({'name': vatapa_frango.name}):
+    recipes_collection.insert_one(vatapa_frango.__dict__)
 
-sopa_frango = Receipt(
-"../static/img/receipt_images/sopa_frango.jpeg",
+sopa_frango = Recipe(
+"../static/img/recipe_images/sopa_frango.jpeg",
 
 "Sopa de Frango",
 
@@ -230,15 +230,15 @@ Queijo ralado a gosto""",
 
 )
 
-if not receipt_collection.find_one({'name': sopa_frango.name}):
-    receipt_collection.insert_one(sopa_frango.__dict__)
+if not recipes_collection.find_one({'name': sopa_frango.name}):
+    recipes_collection.insert_one(sopa_frango.__dict__)
 
 """"
 PESCADOS
 """
 
-salmao_alcaparra = Receipt(
-"../static/img/receipt_images/salmao_alcaparra.jpeg",
+salmao_alcaparra = Recipe(
+"../static/img/recipe_images/salmao_alcaparra.jpeg",
 
 "Salmão com Alcaparras",
 
@@ -269,11 +269,11 @@ Pimenta-do-reino à gosto""",
 "Pescados"
 )
 
-if not receipt_collection.find_one({'name': salmao_alcaparra.name}):
-    receipt_collection.insert_one(salmao_alcaparra.__dict__)
+if not recipes_collection.find_one({'name': salmao_alcaparra.name}):
+    recipes_collection.insert_one(salmao_alcaparra.__dict__)
 
-arroz_camarao = Receipt(
-"../static/img/receipt_images/arroz_camarao.jpeg",
+arroz_camarao = Recipe(
+"../static/img/recipe_images/arroz_camarao.jpeg",
 
 "Arroz com Camarão Cremoso",
 
@@ -307,12 +307,12 @@ Sal """,
 "Pescados"
 )
 
-if not receipt_collection.find_one({'name': arroz_camarao.name}):
-    receipt_collection.insert_one(arroz_camarao.__dict__)
+if not recipes_collection.find_one({'name': arroz_camarao.name}):
+    recipes_collection.insert_one(arroz_camarao.__dict__)
 
 
-file_tilapia = Receipt(
-"../static/img/receipt_images/file_tilapia.jpeg",
+file_tilapia = Recipe(
+"../static/img/recipe_images/file_tilapia.jpeg",
 
 "Filé de Tilápia com Legumes",
 
@@ -358,16 +358,16 @@ Pimenta-do-reino moída na hora a gosto
 )
 
 
-if not receipt_collection.find_one({'name': file_tilapia.name}):
-    receipt_collection.insert_one(file_tilapia.__dict__)
+if not recipes_collection.find_one({'name': file_tilapia.name}):
+    recipes_collection.insert_one(file_tilapia.__dict__)
 
 
 """
 Bolos
 """
 
-bolo_chocolate_morango = Receipt(
-"../static/img/receipt_images/bolo_chocolate_morango.jpeg",
+bolo_chocolate_morango = Recipe(
+"../static/img/recipe_images/bolo_chocolate_morango.jpeg",
 
 "Bolo de Chocolate com Morango",
 
@@ -411,12 +411,12 @@ Morangos para decorar""",
 "Bolos"
 )
 
-if not receipt_collection.find_one({'name': bolo_chocolate_morango.name}):
-    receipt_collection.insert_one(bolo_chocolate_morango.__dict__)
+if not recipes_collection.find_one({'name': bolo_chocolate_morango.name}):
+    recipes_collection.insert_one(bolo_chocolate_morango.__dict__)
 
 
-bolo_banana = Receipt(
-"../static/img/receipt_images/bolo_banana.jpeg",
+bolo_banana = Recipe(
+"../static/img/recipe_images/bolo_banana.jpeg",
 
 "Bolo de Banana com Aveia",
 
@@ -440,11 +440,11 @@ Leve ao forno por 40 minutos ou até o bolo crescer e dourar. Espere amornar e d
 "Bolos"
 )
 
-if not receipt_collection.find_one({'name': bolo_banana.name}):
-    receipt_collection.insert_one(bolo_banana.__dict__)
+if not recipes_collection.find_one({'name': bolo_banana.name}):
+    recipes_collection.insert_one(bolo_banana.__dict__)
 
-bolo_ingles = Receipt(
-"../static/img/receipt_images/bolo_ingles.jpeg",
+bolo_ingles = Recipe(
+"../static/img/recipe_images/bolo_ingles.jpeg",
 
 "Bolo Inglês Clássico",
 
@@ -467,8 +467,8 @@ Retire o bolo do forno e espere 1 hora antes de desenformar. Espere esfriar comp
 "Bolos"
 )
 
-if not receipt_collection.find_one({'name': bolo_ingles.name}):
-    receipt_collection.insert_one(bolo_ingles.__dict__)
+if not recipes_collection.find_one({'name': bolo_ingles.name}):
+    recipes_collection.insert_one(bolo_ingles.__dict__)
 
 
 """
@@ -476,8 +476,8 @@ DOCES
 """
 
 
-doce_amendoim = Receipt(
-"../static/img/receipt_images/doce_amendoim.jpeg",
+doce_amendoim = Recipe(
+"../static/img/recipe_images/doce_amendoim.jpeg",
 
 "Doce de Amendoim",
 
@@ -498,11 +498,11 @@ Açúcar de confeiteiro""",
 "Doces"
 )
 
-if not receipt_collection.find_one({'name': doce_amendoim.name}):
-    receipt_collection.insert_one(doce_amendoim.__dict__)
+if not recipes_collection.find_one({'name': doce_amendoim.name}):
+    recipes_collection.insert_one(doce_amendoim.__dict__)
 
-mousse_maracuja = Receipt(
-"../static/img/receipt_images/mousse_maracuja.jpeg",
+mousse_maracuja = Recipe(
+"../static/img/recipe_images/mousse_maracuja.jpeg",
 
 "Mousse de Maracujá",
 
@@ -525,11 +525,11 @@ Retire as taças da geladeira, adicione o crumble por cima e decore com folhas d
 )
 
 
-if not receipt_collection.find_one({'name': mousse_maracuja.name}):
-    receipt_collection.insert_one(mousse_maracuja.__dict__)
+if not recipes_collection.find_one({'name': mousse_maracuja.name}):
+    recipes_collection.insert_one(mousse_maracuja.__dict__)
 
-pave_pacoca = Receipt(
-"../static/img/receipt_images/pave_pacoca.jpeg",
+pave_pacoca = Recipe(
+"../static/img/recipe_images/pave_pacoca.jpeg",
 
 "Pavê de Paçoca",
 
@@ -561,6 +561,6 @@ Amendoim torrado sem pele a gosto para decorar""",
 )
 
 
-if not receipt_collection.find_one({'name': pave_pacoca.name}):
-    receipt_collection.insert_one(pave_pacoca.__dict__)
+if not recipes_collection.find_one({'name': pave_pacoca.name}):
+    recipes_collection.insert_one(pave_pacoca.__dict__)
 

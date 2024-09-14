@@ -1,124 +1,104 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="icon" href="../static/img/website_logo.png" >
-    <link rel="stylesheet" href="../static/css/profile_page.css">
-</head>
-<body>
-    <header class="header">
-        <a href="/"><img class="logo" src="../static/img/website_logo.png" alt="Logo Site"></a>
+{% extends 'base_header_footer.html'%}
 
-        <ul class="flex_row">
-            <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">Receitas</li>
-        </ul>
-    </header>
 
-    <main>
-        <div class="user_info">
-            <img class="profile_img" src="../static/img/user_profile_img.png" alt="Foto Perfil">
-            <h1>{{ session["username"] }}</h1>
-        </div>
+{% block title %}Perfil{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/profile_page.css">
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <div class="user_info">
+        <img class="profile_img" src="../static/img/user_profile_img.png" alt="Foto Perfil">
+        <h1>{{ session["username"] }}</h1>
+    </div>
 
     <!--ÁREA DE MUDANÇA DE DADOS-->
 
-        <div class="container">
-            <div class="nav">
-                <h2 class="active">&#128151;</h2>
-                <h2>Meus Comentários</h2>
-                <h2>Editar Nome</h2>
-                <h2>Editar Senha</h2>
-                <h2 style="color: crimson; border-right: 0;">Deletar Conta</h2>
-            </div>
-
-            <div class="nav_content">
-
-                <!-- Favourites -->
-
-                <form class="farourites_form active" method="post" action="/perfil">
-                    <h1>Espaço reservado para favoritos</h1> 
-                </form>
-
-                <!-- Comments -->
-
-                <form class="my_comments_form" method="post" action="/perfil">
-                    <h1>Espaço reservado para meus comentários</h1> 
-                </form>
-
-                <!-- Edit username -->
-
-                <form class="edit_username_form" method="post" action="/perfil">
-
-                    <p class="no_display">Teste</p>                    
-
-                    <div class="input_container">
-                        <label>Novo nome:</label>
-                        <input type="text" id="new_username" name="new_username">
-                    </div>
-
-                    <div class="input_container">
-                        <label>Confirme sua senha:</label>
-                        <input type="password" class="password" name="password">
-                    </div>
-
-                    <button class="confirm_bt" value="edit_username_btn" type="submit">Confirmar</button>
-                </form>
-
-                <!-- Edit password -->
-
-                <form class="edit_password_form" method="post" action="/perfil">
-
-                    <p class="no_display">Teste</p>
-
-                    <div class="input_container">
-                        <label>Nova senha:</label>
-                        <input type="password" id="new_password" name="new_password">
-                    </div>
-
-                    <div class="input_container">
-                        <label>Confirme com a sua senha anterior:</label>
-                        <input type="password" class="password" name="password">
-                    </div>
-
-                    <button type="submit" value="edit_password_btn" class="confirm_bt">Confirmar</button>
-                </form>
-
-                <!-- Delete Account -->
-
-                <form class="delete_account_form" method="post" action="/perfil">
-
-                    <p class="no_display">Teste</p>
-
-                    <div class="input_container">
-                        <label>Confirme sua senha:</label>
-                        <input type="password" class="password" name="password">
-                    </div>
-
-                    <button type="submit" value="delete_account_btn" class="confirm_bt">Confirmar</button>
-                </form>
-
-            </div>
+    <div class="container">
+        <div class="nav">
+            <h2 class="active">&#128151;</h2>
+            <h2>Meus Comentários</h2>
+            <h2>Editar Nome</h2>
+            <h2>Editar Senha</h2>
+            <h2 style="color: crimson; border-right: 0;">Deletar Conta</h2>
         </div>
-    </main>
 
-    <!--RODAPÉ DA PÁGINA-->
+        <div class="nav_content">
 
-    <footer>
-        <div class="dev_names"> 
-            <h3 style="padding-bottom: 15px;   color: black;" >Desenvolvedores</h3>
-            <h5>Eduardo Silva Waski - 231011284</h5>
-            <h5>José Victor Gabriel - 231027121</h5>
+            <!-- Favourites -->
+
+            <form class="farourites_form active" method="post" action="/perfil">
+                <h1>Espaço reservado para favoritos</h1> 
+            </form>
+
+            <!-- Comments -->
+
+            <form class="my_comments_form" method="post" action="/perfil">
+                <h1>Espaço reservado para meus comentários</h1> 
+            </form>
+
+            <!-- Edit username -->
+
+            <form class="edit_username_form" method="post" action="/perfil">
+
+                <p class="no_display">Teste</p>                    
+
+                <div class="input_container">
+                    <label>Novo nome:</label>
+                    <input type="text" id="new_username" name="new_username">
+                </div>
+
+                <div class="input_container">
+                    <label>Confirme sua senha:</label>
+                    <input type="password" class="password" name="password">
+                </div>
+
+                <button class="confirm_bt" value="edit_username_btn" type="submit">Confirmar</button>
+            </form>
+
+            <!-- Edit password -->
+
+            <form class="edit_password_form" method="post" action="/perfil">
+
+                <p class="no_display">Teste</p>
+
+                <div class="input_container">
+                    <label>Nova senha:</label>
+                    <input type="password" id="new_password" name="new_password">
+                </div>
+
+                <div class="input_container">
+                    <label>Confirme com a sua senha anterior:</label>
+                    <input type="password" class="password" name="password">
+                </div>
+
+                <button type="submit" value="edit_password_btn" class="confirm_bt">Confirmar</button>
+            </form>
+
+            <!-- Delete Account -->
+
+            <form class="delete_account_form" method="post" action="/perfil">
+
+                <p class="no_display">Teste</p>
+
+                <div class="input_container">
+                    <label>Confirme sua senha:</label>
+                    <input type="password" class="password" name="password">
+                </div>
+
+                <button type="submit" value="delete_account_btn" class="confirm_bt">Confirmar</button>
+            </form>
+
         </div>
-        <div class="unb">
-            <h2>Universidade de Brasília</h2>
-            <img class="img_unb" src="../static/img/unb_logo.png" alt="unb logo">
-        </div>
-    </footer>
+    </div>
+</main>
+{% endblock %}
 
-    <!-- SCRIPT -->
-    <script src="../static/js/profile_page.js"></script>
 
-</body>
-</html>
+{% block script %}
+<script src="../static/js/profile_page.js"></script>
+{% endblock %}

@@ -8,5 +8,5 @@ database = mongo_db["blog_database"]
 
 # Criação das coleções
 users_collection = database["users"]
-receipt_collection = database["receipts"]
+recipes_collection = database["recipes"]
 comments_collection = database["comments"]

@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask
 from datetime import timedelta
 
 app = Flask(__name__)
@@ -22,8 +22,8 @@ app.register_blueprint(logout)
 from controller.admin import admin
 app.register_blueprint(admin)
 
-from controller.receipt_page import receipt_page
-app.register_blueprint(receipt_page)
+from controller.recipe_page import recipe_page
+app.register_blueprint(recipe_page)
 
 if __name__ == "__main__":
     app.run(debug=True)
