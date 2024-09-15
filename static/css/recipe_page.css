@@ -91,3 +91,13 @@ main {
     font-family: 'Arial', sans-serif;
     text-align: justify;
 }
+
+.ingredients_list {
+    font-size: 1.8rem;
+    list-style: none;
+}
+
+.ingredients_list li {
+    margin-bottom: 5px;
+    color: #666;
+}

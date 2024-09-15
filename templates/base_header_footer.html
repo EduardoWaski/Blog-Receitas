@@ -20,7 +20,7 @@
             <form class="header_form" method="post" action="/receitas">
                 <li class="ul_option"><img src="../static/img/fork.png" alt="Ícone de garfo">
                     <div class="form_select">
-                        <select name="recipe" id="recipe" >
+                        <select name="category" id="category" >
                             <optgroup label = "Receitas">
                                 <option value="Bovinos">Bovinos</option>
                                 <option value="Pescados">Pescados</option>
@@ -34,6 +34,7 @@
                 </li>
             </form>
 
+            <li class="ul_option"><a href="/receitas/criar_receitas"><img src="../static/img/recipe_icon.png" alt="Ícone de um livro de receitas">Criar minha receita</a></li>
             <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
             <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>
         </ul>

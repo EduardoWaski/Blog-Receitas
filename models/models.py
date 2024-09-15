@@ -6,8 +6,9 @@ class User:
         self.is_admin = is_admin
 
 class Recipe:
-    def __init__(self, image, name, preparation, ingredients, category):
-        self.image = image
+    def __init__(self, user_id, image_id, name, preparation, ingredients, category):
+        self.user = user_id
+        self.image_id = image_id
         self.name = name
         self.preparation = preparation
         self.ingredients = ingredients

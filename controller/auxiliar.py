@@ -90,3 +90,13 @@ def is_admin():
         return False
     
     return True
+
+def any_empty_value(dict, do_flash=False):
+
+    if any(not str(valor).strip() for valor in dict.values()):
+
+        if do_flash:
+            flash("Há valores vazios!") 
+        return True
+
+    return False

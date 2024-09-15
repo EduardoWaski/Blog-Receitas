@@ -8,21 +8,25 @@ profile = Blueprint("profile", __name__)
 @profile.route("/perfil", methods=["GET"])
 def profile_page():
 
-    if "username" in session:
-        return render_template("profile_page.html")
-    return redirect(url_for("auth.login_signup"))
+    # Verificando se há algum usuário logado
+    if not "username" in session:
+        return redirect(url_for("auth.login_signup"))
+    
+    return render_template("profile_page.html")
 
 # ------------------------------------- MÉTODO POST DO PERFIL -----------------------------------------------
 
 @profile.route("/perfil", methods=["POST"])
 def profile_page_post():
+
+    # Verificando se há algum usuário logado
+    if not "username" in session:
+        return redirect(url_for("auth.login_signup"))
     
     # Recuperando o formulário, senha e o botão apertado
     inputed_form = request.get_json()
     inputed_password = inputed_form["inputed_password"]
     pressed_btn = inputed_form["pressed_btn"]
-
-
 
     # Verificando se a senha colocada está correta
     if not is_correct_password(inputed_password):
