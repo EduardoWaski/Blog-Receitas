@@ -10,7 +10,7 @@ def admin_get():
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
     
     session.pop('_flashes', None)
     
@@ -23,7 +23,7 @@ def admin_post():
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
 
     # Pegando o form ao apertar um botão
     form = request.form.to_dict()
@@ -57,7 +57,7 @@ def user_info_get(username):
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
     
     session.pop('_flashes', None)
     
@@ -71,7 +71,7 @@ def user_info_post(username):
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
     
     
     form = request.form.to_dict()
@@ -106,7 +106,7 @@ def add_new_user_get():
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
     
     # Recuperando usuário do banco de dados
     return render_template("admin_add_new_user.html")
@@ -117,7 +117,7 @@ def add_new_user_post():
 
     # Verifica se o usuário logado é admin
     if not is_admin():
-        return redirect(url_for("index.home_page"))
+        return redirect(url_for("index.home_page_get"))
     
     form = request.form.to_dict()
     

@@ -28,7 +28,7 @@ def login_signup():
             session['password'] = inputed_password
             session['is_admin'] = users_collection.find_one({"username": inputed_username})['is_admin']
             session.permanent = True
-            return redirect(url_for('index.home_page'))
+            return redirect(url_for('index.home_page_get'))
 
     # Se for cadastro
     else:                   
@@ -44,7 +44,7 @@ def login_signup():
 
             session['is_admin'] = users_collection.find_one({"username": inputed_username})['is_admin']
             
-            return redirect(url_for(f'index.home_page'))
+            return redirect(url_for(f'index.home_page_get'))
         
     return render_template('login_signup.html')
 

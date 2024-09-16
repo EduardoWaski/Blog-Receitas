@@ -18,32 +18,17 @@
     <!--CAIXAS DE RECEITAS-->
 
     <div class="container_boxes">
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita1</h2>
-        </article>
+        {% for recipe in recipes %}
+            <article class="recipe_box" id="{{ recipe['_id'] }}">
+                <img src="{{ url_for('recipe.get_image', file_id=recipe['image_id'])}}">
+                <h2 class="recipe_text">{{recipe['name']}}</h2>
+            </article>
+        {% endfor %}
 
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita2</h2>
-        </article>
-
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita3</h2>
-        </article>
-
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita4</h2>
-        </article>
-
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita5</h2>
-        </article>
-
-
-        <article class="recipe_box">
-            <h2 class="recipe_text">Receita6</h2>
-        </article>
     </div>
 </main>
 {% endblock %}
 
-{% block script %}{% endblock %}
+{% block script %}
+<script src="../static/js/index.js"></script>
+{% endblock %}
