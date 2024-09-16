@@ -9,19 +9,21 @@ recipe = Blueprint('recipe', __name__)
 
 
 # ---------------------------- ROTA DA RECEITA --------------------------------------------
-@recipe.route("/receita", methods = ["GET"])
-def recipe_get():
+@recipe.route('/receita/', defaults={'recipe_id': None})  # Define o valor padrão para 'id_receita'
+@recipe.route("/receita/<recipe_id>", methods = ["GET"])
+def recipe_get(recipe_id):
 
     # Verificando se há algum usuário logado
     if not "username" in session:
         return redirect(url_for("auth.login_signup"))
     
-    # Quando não existir um recipe_id, ele tentará mostrar a receita anteriormente salva na session
-    recipe_id = request.args.get("recipe")
-    if recipe_id:
-        session["current_recipe_id"] = recipe_id
-   
-    # Recuperando a receita no banco de dados
+    # Caso não tenha sido informado um id da receita, o sistema pegará a receita anterior
+    if not recipe_id:
+        recipe = recipes_collection.find_one({"_id": ObjectId(session["current_recipe_id"])})
+        return render_template("recipe.html", recipe=recipe)
+    
+    # Caso o id exista, vamos atualizá-lo na session
+    session["current_recipe_id"] = recipe_id
     recipe = recipes_collection.find_one({"_id": ObjectId(session["current_recipe_id"])})
     
     return render_template("recipe.html", recipe=recipe)
@@ -34,29 +36,56 @@ def recipe_post():
     if not "username" in session:
         return redirect(url_for("auth.login_signup"))
     
+    # Recuperando o formulário e seus valores
     form = request.form.to_dict()
-    user_comment = form.get("user_comment").strip()
-    user = users_collection.find_one({"username": session["username"]})
+    user_comment = form.get("user_comment")
+    view_recipe_id = form.get("view_recipe_btn")
+    delete_recipe_id = form.get("delete_recipe_btn")
 
-    # Se não existir comentário (se for em branco), então ele não deve ser registrado
-    if not user_comment:
-        return redirect(url_for("recipe.recipe_get"))
-
-    # Adicionando o comentário na base de dados
-    comment = Comment(user["_id"],session["current_recipe_id"], user_comment).__dict__
-    comments_collection.insert_one(comment)
+    # Se o usuário apertou o botão de visualizar a receita
+    if view_recipe_id:
+        return redirect(url_for("recipe.recipe_get", recipe_id=view_recipe_id))
     
-    # Separando as informações importantes do comentário para salvar na receita
-    comment.pop("recipe_id", "erro")
-    comment['username'] = user['username']
+    # Se o usuário clicou no botão de deletar a receita
+    if delete_recipe_id:
+        
+        # Antes de deletar as receitas, temos que recuperar os comentários associados a ela para deletá-los também
+        comments_list = recipes_collection.find_one({"_id": ObjectId(delete_recipe_id)}, {"comments": 1, "_id": 0})['comments']
+        comments_ids = []
 
-    recipes_collection.update_one(
-    {"_id": ObjectId(session["current_recipe_id"])},
-    {"$push": {"comments": comment}}
-    )
+        # Recuperando apenas os IDs dos comentários
+        for comment_dict in comments_list:
+            comments_ids.append(comment_dict["_id"])
+        
+        # Deletando os comentários do banco de dados
+        for id in comments_ids:
+            comments_collection.delete_one({"_id": id})
 
-    # Recarregando a página
-    return redirect(url_for("recipe.recipe_get"))
+        # Por fim, deletando a receita
+        recipes_collection.delete_one({"_id": ObjectId(delete_recipe_id)})
+
+        return redirect(url_for("profile.profile_page_get"))
+    
+    if user_comment:
+        user_comment = user_comment.strip()
+
+        logged_user = users_collection.find_one({"username": session['username']})
+
+        # Adicionando o comentário na base de dados
+        comment = Comment(logged_user["_id"],session["current_recipe_id"], user_comment).__dict__
+        comments_collection.insert_one(comment)
+        
+        # Retirando as informações desnecessárias para adicionar na receita
+        comment.pop("recipe_id", "Não encontrado")
+        comment['username'] = logged_user['username']
+
+        recipes_collection.update_one(
+        {"_id": ObjectId(session["current_recipe_id"])},
+        {"$push": {"comments": comment}}
+        )
+
+        # Recarregando a página
+        return redirect(url_for("recipe.recipe_get"))
 
 # ---------------------------- ROTA DAS RECEITAS --------------------------------------------
 

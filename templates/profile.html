@@ -37,9 +37,15 @@
 
             <!-- Comments -->
 
-            <form class="my_recipes_form" method="get" action="/receita">
+            <form class="my_recipes_form" method="post" action="/receita">
                 {% for recipe in user_recipes %}
-                    <button type="submit" name="recipe" value="{{recipe['_id']}}" class="recipe_btn">{{recipe["name"]}}</button>
+                    <div class="recipe_container">
+                        <h3>{{recipe['name']}}</h3>
+                        <div>
+                            <button type="submit" class="recipe_btn" name="view_recipe_btn" value="{{recipe['_id']}}"><img src="../static/img/view_icon.png"></button>
+                            <button type="submit" class="recipe_btn" name="delete_recipe_btn" value="{{recipe['_id']}}"><img src="../static/img/trash_can_icon.png"></button>
+                        </div>
+                    </div> 
                 {% endfor %}
             </form>
 

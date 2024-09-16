@@ -13,7 +13,7 @@ body,html {
 
 html {
     font-size: 62.5%;
-    font-family: "Inter", sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 body {
@@ -50,7 +50,8 @@ main {
     color: #333;
 }
 
-input {
+input, 
+textarea[name='preparation'] {
     width: 100%;
     padding: 10px;
     border-radius: 4px;
@@ -58,6 +59,11 @@ input {
     font-size: 1.2rem;
     border: 0;
     outline: 1px solid black;
+}
+
+textarea[name='preparation'] {
+    field-sizing: content;
+    resize: none;
 }
 
 input:focus {

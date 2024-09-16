@@ -41,7 +41,7 @@ main {
 }
 
 .recipe_title {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -64,7 +64,7 @@ main {
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 10px;
     text-align: left;
 }
@@ -76,13 +76,13 @@ h3 {
 
 .ingredients_list {
     list-style: none;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: black;
 }
 
 .method {
     padding-left: 10px;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .comment_form {
@@ -95,16 +95,14 @@ h3 {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 .user_icon {
     margin-right: 10px;
-    font-size: 1.5rem;
 }
 
 .username {
-    font-size: 1.1rem;
     font-weight: bold;
 }
 
@@ -119,7 +117,7 @@ h3 {
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-top: 10px;
-    font-size: 1rem;
+    font-size: 1.6rem;
     resize: none;
     transition: border 0.3s ease;
     field-sizing: content;
@@ -150,6 +148,7 @@ h3 {
 .comment_container {
     display: flex;
     flex-flow: column nowrap;
+    font-size: 1.6rem;
     margin: 1rem 0;
 }
 
@@ -165,7 +164,7 @@ h3 {
     border: 1px solid #ccc;
     padding: 10px;
     field-sizing: content;
-    font-size: 1rem;
+    font-size: 1.6rem;
     border-radius: 10px;
 }
 
