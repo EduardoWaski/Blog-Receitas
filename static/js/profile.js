@@ -3,7 +3,7 @@
 const navs = document.querySelectorAll(".nav h2")
 const nav_forms = document.querySelectorAll(".nav_content > form")
 const inputs = [...document.querySelectorAll(".input_container input")]
-const buttons = [...document.querySelectorAll("button:not(.header_btn")]
+const buttons = [...document.querySelectorAll("button:not(.header_btn, .recipe_btn")]
 const password_inputs = [...document.querySelectorAll("input[name=password]")]
 const auth_msgs = [...document.querySelectorAll(".no_display")]
 

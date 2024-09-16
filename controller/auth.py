@@ -26,6 +26,7 @@ def login_signup():
 
             session['username'] = inputed_username
             session['password'] = inputed_password
+            session['is_admin'] = users_collection.find_one({"username": inputed_username})['is_admin']
             session.permanent = True
             return redirect(url_for('index.home_page'))
 
@@ -35,10 +36,11 @@ def login_signup():
 
             session['username'] = inputed_username
             session['password'] = inputed_password
+            session['is_admin'] = users_collection.find_one({"username": inputed_username})['is_admin']
             session.permanent = True
             
             # Criando um novo usuário a partir da classe
-            new_user = User(inputed_username, inputed_password).__dict__
+            new_user = User(username=inputed_username, password=inputed_password).__dict__
             users_collection.insert_one(new_user)
             return redirect(url_for(f'index.home_page'))
         

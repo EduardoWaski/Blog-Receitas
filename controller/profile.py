@@ -6,13 +6,16 @@ from .auxiliar import *
 profile = Blueprint("profile", __name__)
 
 @profile.route("/perfil", methods=["GET"])
-def profile_page():
+def profile_page_get():
 
     # Verificando se há algum usuário logado
     if not "username" in session:
         return redirect(url_for("auth.login_signup"))
     
-    return render_template("profile_page.html")
+    user_recipe_ids = users_collection.find_one({"username": session["username"]})["my_recipes"]
+    user_recipes = recipes_collection.find({"_id": {"$in": user_recipe_ids}})
+
+    return render_template("profile.html", user_recipes=user_recipes)
 
 # ------------------------------------- MÉTODO POST DO PERFIL -----------------------------------------------
 
@@ -71,6 +74,4 @@ def profile_page_post():
         users_collection.update_one(filter, {"$set": {"password": inputed_new_password}})
         session["password"] = inputed_new_password
         return make_response(jsonify({"status": "credentials_changed"}))
-    
-    return make_response(jsonify({"status": "credentials_changed"}))
     

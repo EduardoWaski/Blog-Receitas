@@ -5,7 +5,7 @@
 
 
 {% block css %}
-<link rel="stylesheet" href="../static/css/profile_page.css">
+<link rel="stylesheet" href="../static/css/profile.css">
 {% endblock %}
 
 
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="nav">
             <h2 class="active">&#128151;</h2>
-            <h2>Meus Comentários</h2>
+            <h2>Minhas receitas</h2>
             <h2>Editar Nome</h2>
             <h2>Editar Senha</h2>
             <h2 style="color: crimson; border-right: 0;">Deletar Conta</h2>
@@ -31,14 +31,16 @@
 
             <!-- Favourites -->
 
-            <form class="farourites_form active" method="post" action="/perfil">
+            <form class="favourites_form active" method="post" action="/perfil">
                 <h1>Espaço reservado para favoritos</h1> 
             </form>
 
             <!-- Comments -->
 
-            <form class="my_comments_form" method="post" action="/perfil">
-                <h1>Espaço reservado para meus comentários</h1> 
+            <form class="my_recipes_form" method="get" action="/receita">
+                {% for recipe in user_recipes %}
+                    <button type="submit" name="recipe" value="{{recipe['_id']}}" class="recipe_btn">{{recipe["name"]}}</button>
+                {% endfor %}
             </form>
 
             <!-- Edit username -->
@@ -100,5 +102,5 @@
 
 
 {% block script %}
-<script src="../static/js/profile_page.js"></script>
+<script src="../static/js/profile.js"></script>
 {% endblock %}

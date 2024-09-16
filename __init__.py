@@ -22,8 +22,8 @@ app.register_blueprint(logout)
 from controller.admin import admin
 app.register_blueprint(admin)
 
-from controller.recipe_page import recipe_page
-app.register_blueprint(recipe_page)
+from controller.recipe import recipe
+app.register_blueprint(recipe)
 
 if __name__ == "__main__":
     app.run(debug=True)

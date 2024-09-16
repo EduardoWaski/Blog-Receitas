@@ -1,0 +1,76 @@
+{% extends "base_header_footer.html" %}
+
+{% block title %}{{recipe["name"]}}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/recipe.css">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="recipe_container">
+        <h1 class="recipe_title">{{recipe["name"]}}</h1>
+    
+        <div class="recipe_image">
+            <img src="{{ url_for('recipe.get_image', file_id=recipe['image_id']) }}">
+        </div>
+        
+        <div class="recipe_content">
+            <div class="ingredients_container">
+                <h3>Ingredientes:</h3>
+
+                <ul class="ingredients_list">
+                    {% for ingredient in recipe['ingredients'] %}
+                    <li>.{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            
+            <div class="method">
+                <h3>Modo de Preparo</h3>
+                <p>{{recipe['preparation']}}</p>
+            </div>
+        </div>
+
+        <form class="comment_form" action="/receita" method="post">
+            <h3>Comentários</h3>
+            <div class="my_user">
+                <span class="user_icon">👤</span>
+                <span class="username">{{session["username"]}}</span>
+            </div>
+            <textarea class="comment_input" name="user_comment" placeholder="Digite seu comentário"></textarea>
+            <button type="submit" class="add_comment_btn"><img src="../static/img/blue_arrow_icon.png"></button>
+        </form>
+
+        <div class="other_comments_container">
+            {% with comments = recipe['comments']%}
+
+                {% if comments %}
+
+                    {% for comment in comments%}
+                        <div class="comment_container">
+
+                            <div class="user_info">
+                                <span class="user_icon">👤</span>
+                                <p class="username">{{comment['username']}}</p>
+                            </div>
+
+                            <p class="comment">{{comment['text']}}</p>
+
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                        <h2 class="no_comments_msg">Sem comentários por aqui</h2>
+                {% endif %}
+
+            {% endwith %}
+        </div>
+
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

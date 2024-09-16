@@ -34,6 +34,9 @@
                 </li>
             </form>
 
+            {% if session['is_admin'] %}
+                <li class="ul_option"><a href="/admin"><img src="../static/img/admin_icon.png" alt="Ícone do admin">Admin</a></li>
+            {% endif %}
             <li class="ul_option"><a href="/receitas/criar_receitas"><img src="../static/img/recipe_icon.png" alt="Ícone de um livro de receitas">Criar minha receita</a></li>
             <li class="ul_option"><a href="/perfil"><img src="../static/img/profile.png" alt="Ícone de usuário">{{ session["username"] }}</a></li>
             <li class="ul_option"><a href="/logout" class="logout_btn">Logout</a></li>

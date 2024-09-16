@@ -3,7 +3,7 @@
 {% block title %}Receitas de Vó{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="../static/css/recipe_page.css">
+<link rel="stylesheet" href="../static/css/recipes.css">
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
             <div>
                 <h1>{{recipe['name']}}</h1>
                 <div class="img_container">
-                    <img src="{{ url_for('recipe_page.get_image', file_id = recipe['image_id']) }}" alt="Imagem da Receita">
+                    <img src="{{ url_for('recipe.get_image', file_id = recipe['image_id']) }}" alt="Imagem da Receita">
                 </div>
             </div>
 

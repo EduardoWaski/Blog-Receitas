@@ -1,63 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crie suas receitas!</title>
+{% extends "base_header_footer.html"%}
 
-    <link rel="stylesheet" href="../static/css/add_recipe.css">
-</head>
-<body>
-    <main>
+{% block title %}crie suas receitas!{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/add_recipe.css">
+{% endblock %}
+
+{% block content %}
+<main>
+
+
+
+    <form class="add_recipe_form" method="post" action="/receitas/criar_receitas" enctype="multipart/form-data">
 
         {% with messages = get_flashed_messages() %}
             <p class="flash_msg">{{messages[-1]}}</p>
         {% endwith %}
 
-        <form class="add_recipe_form" method="post" action="/receitas/criar_receitas" enctype="multipart/form-data">
-            <div class="input_container">
-                <label>Nome da receita</label>
-                <input type="text" name="name">
-            </div>
+        <div class="input_container">
+            <label>Nome da receita</label>
+            <input type="text" name="name">
+        </div>
 
-            <fieldset class="ingredients_container">
-                <legend>Ingredientes:</legend>
-
-                <div class="input_container">
-                    <input type="text" name="recipe_ingredient1">
-                </div>
-
-                <button type="button" class="add_ingredient_btn">+</button>
-            </fieldset>
+        <fieldset class="ingredients_container">
+            <legend>Ingredientes:</legend>
 
             <div class="input_container">
-                <label>Modo de preparo</label>
-                <input type="text" name="preparation">
+                <input type="text" name="recipe_ingredient1">
             </div>
 
-            <div class="input_container">
-                <label>Categoria</label>
-                <select name="category" id="category">
-                    <optgroup label = "Receitas">
-                        <option value="Bovinos">Bovinos</option>
-                        <option value="Pescados">Pescados</option>
-                        <option value="Aves">Aves</option>
-                        <option value="Bolos">Bolos</option>
-                        <option value="Doces">Doces</option>
-                    </optgroup>
-                </select>
-            </div>
+            <button type="button" class="add_ingredient_btn">+</button>
+        </fieldset>
 
-            <div class="input_container">
-                <label>Imagem</label>
-                <input class="img_input" type="file" name="img" accept="image/*">
-                <div class="img_container"></div>
-            </div>
+        <div class="input_container">
+            <label>Modo de preparo</label>
+            <input type="text" name="preparation">
+        </div>
 
-            <button type="submit">Enviar</button>
-        </form>
-    </main>
+        <div class="input_container">
+            <label>Categoria</label>
+            <select name="category" id="category">
+                <optgroup label = "Receitas">
+                    <option value="Bovinos">Bovinos</option>
+                    <option value="Pescados">Pescados</option>
+                    <option value="Aves">Aves</option>
+                    <option value="Bolos">Bolos</option>
+                    <option value="Doces">Doces</option>
+                </optgroup>
+            </select>
+        </div>
 
-    <script src="../static/js/add_recipe.js"></script>
-</body>
-</html>
+        <div class="input_container">
+            <label>Imagem</label>
+            <input class="img_input" type="file" name="img" accept="image/*">
+            <div class="img_container"></div>
+        </div>
+
+        <button class="form_btn" type="submit">Enviar</button>
+    </form>
+</main>
+{% endblock %}
+
+{% block script %}
+<script src="../static/js/add_recipe.js"></script>
+{% endblock %}
