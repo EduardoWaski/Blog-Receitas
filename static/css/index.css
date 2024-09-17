@@ -50,7 +50,7 @@ hr{
 .container_boxes{
     max-width: 60vw;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 20vw);

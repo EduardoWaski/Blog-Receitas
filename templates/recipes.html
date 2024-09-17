@@ -9,7 +9,7 @@
 {% block content %}
 <main>
     {% for recipe in category_recipes %}
-        <article class="recipe">
+        <article class="recipe" id="{{recipe['_id']}}">
 
             <div>
                 <h1>{{recipe['name']}}</h1>
@@ -39,4 +39,6 @@
 </main>
 {% endblock %}
 
-{% block script %}{% endblock %}
+{% block script %}
+<script src="../static/js/recipes.js"></script>
+{% endblock %}

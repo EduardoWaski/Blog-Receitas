@@ -20,6 +20,7 @@ recipe_boxes.map((element) => {
         let recipe_id = pressed_recipe_box.id
 
         // Fazendo o redirecionamento para a página da receita
-        window.location.assign(`${window.location.href}receita/${recipe_id}`)
+
+        window.location.assign(`${window.location.origin}/receita/${recipe_id}`)
     })
 })

@@ -42,6 +42,7 @@ main {
     max-width: 400px;
     max-height: fit-content;
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .recipe:hover {

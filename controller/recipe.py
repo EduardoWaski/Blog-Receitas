@@ -95,7 +95,7 @@ def recipes_post():
     # Verificando se há algum usuário logado
     if not "username" in session:
         return redirect(url_for("auth.login_signup"))
-
+    
     chosen_category = request.form.get("category").lower()
     category_recipes = list(recipes_collection.find({"category": chosen_category}))
     return render_template("recipes.html", category_recipes = category_recipes) # A PRIMEIRA VAR É COMO VAI SER CHAMADA NO HTML E A SEGUNDA É A VARIAVEL DA ROTA
