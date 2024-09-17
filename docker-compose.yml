@@ -9,8 +9,8 @@ services:
       - volume_mongo:/data/db
     networks:
       - mongo_network
-    ports:
-      - 27017:27017
+    expose:
+      - 27017
 
   mongo_express:
     image: mongo-express
@@ -42,4 +42,3 @@ networks:
 
 volumes:
   volume_mongo:
-  volume_express:
